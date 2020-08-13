@@ -24,7 +24,7 @@ font-1 = "FontAwesome:pixelsize=10;1"
 font-2 = "Font Awesome 5 Brands:style=Regular:pixelsize=10;1"
 font-3 = "Dejavu sans:style=regular:pixelsize=10;1"
 modules-left = bspwm battery
-modules-center = cpuload freqmon mem spacer gpuload gpuvram temp
+modules-center = cputemp cpuload freqmon mem spacer gpuload gpuvram gputemp
 modules-right = wifi openvpn-isrunning info-pingrtt date
 tray-position = right
 tray-maxsize = 10
@@ -117,15 +117,21 @@ type = custom/script
 exec = echo "VRAM: $((`cat /sys/class/drm/card0/device/mem_info_vram_used` / 1024 / 1024)) MB"
 interval = 1
 
-[module/temp]
+[module/gputemp]
 type = custom/script
-exec = sensors | grep "edge:" | cut -d "+" -f2 | cut -d " " -f 1
+exec = echo " $(sensors | grep "edge:" | cut -d "+" -f2 | cut -d "." -f 1)C"
+tail = false
+interval = 2
+
+[module/cputemp]
+type = custom/script
+exec = echo " $(sensors | grep "Tctl:" | cut -d '+' -f 2 | cut -d "." -f 1)C"
 tail = false
 interval = 2
 
 [module/spacer]
 type = custom/script
-exec = echo "  |   "
+exec = echo " | "
 tail = false
 interval = 1
 
