@@ -28,7 +28,7 @@ font-1 = "FontAwesome:pixelsize=10;1"
 font-2 = "Font Awesome 5 Brands:style=Regular:pixelsize=10;1"
 font-3 = "Dejavu sans:style=regular:pixelsize=10;1"
 modules-left = bspwm battery
-modules-center = cpumon freqmon mem gpufreqmon gpuvram temp
+modules-center = cpumon freqmon mem spacer gpufreqmon gpuvram temp
 modules-right = wifi openvpn-isrunning info-pingrtt date
 tray-position = right
 tray-maxsize = 10
@@ -122,8 +122,8 @@ interval = 1
 
 [module/gpufreqmon]
 type = custom/script
-exec = echo "  |   GPU: $(sudo cat /sys/class/drm/card0/device/gpu_busy_percent)%"
-tail = false
+exec = ~/.config/polybar/gpu.sh
+tail = true
 interval = 1
 
 [module/gpuvram]
@@ -136,3 +136,10 @@ type = custom/script
 exec = sensors | grep "edge:" | cut -d "+" -f2 | cut -d " " -f 1
 tail = false
 interval = 2
+
+[module/spacer]
+type = custom/script
+exec = echo "  |   "
+tail = false
+interval = 1
+
