@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#if [[ $(/usr/bin/id -u) -ne 0 ]]; then
-#    echo "Give me root!"
-#    exit
-#fi
-
 yay --save --nocleanmenu --nodiffmenu --noconfirm
 
 yes | yay -S rmtrash light acpi_call exa tp_smapi pulseeffects-git picom-tyrone-git 
@@ -22,5 +17,6 @@ cp Assets/.bg ~/.bg
 
 
 cp -r .config ~
-cp -r etc /
 cp -r .local ~
+echo 'copying /etc gimme root!'
+sudo cp -r etc /
