@@ -19,7 +19,7 @@ fi
 if [ "$status" = "Discharging" ]; then
     echo "$icon $time ($charge%) "
 elif [ "$status" = "Unknown" ]; then
-    echo "$icon ($charge%) "
+    echo "$icon ($charge%) "
 elif [ "$status" = "Charging" ]; then
     echo "$icon $time ($charge%) "
 fi
