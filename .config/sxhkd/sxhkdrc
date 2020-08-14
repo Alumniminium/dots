@@ -121,7 +121,13 @@ XF86AudioMute
     /usr/bin/volumeOSD mute &
 	
 XF86MonBrightnessDown
- light -U 1
+ light -U 5
 
 XF86MonBrightnessUp
+ light -A 5
+
+shift + XF86MonBrightnessDown
+ light -U 1
+
+shift + XF86MonBrightnessUp
  light -A 1
