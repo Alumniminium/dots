@@ -134,9 +134,3 @@ type = custom/script
 exec = echo " | "
 tail = false
 interval = 1
-
-[module/openweathermap-fullfeatured]
-type = custom/script
-exec = ~/.config/polybar/openweathermap-fullfeatured.sh
-interval = 600
-label-font = 3
