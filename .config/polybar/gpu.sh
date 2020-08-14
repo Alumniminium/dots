@@ -2,7 +2,7 @@
 
 samples=10
 
-for ((;;)) 
+for (( ; ; )) 
 do
     total=0
     for i in $(seq 1 $samples) 
