@@ -107,7 +107,7 @@ Print
 
 # screenshot + upload to img.her.st
 Print + shift
-	maim -s /tmp/upload.png --hidecursor; imgup -r -c --height=240 /tmp/upload.png; play ~/.config/ding.wav
+	maim -s /tmp/upload.png --hidecursor; ~/.local/bin/imgup /tmp/upload.png $(date +%s).png && play ~/.config/ding.wav
 
 # Hardware keys
 

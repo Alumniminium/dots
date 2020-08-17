@@ -1,17 +1,20 @@
 #!/bin/bash
-yay --save --nocleanmenu --nodiffmenu --noconfirm
 
-yes | yay -Syu
-yes | yay -S rmtrash light acpi_call exa tp_smapi pulseeffects-git picom-tyrone-git xclip
-# optional apps
-yes | yay -S keynav ncdu dfc pkgfile mtr
-# optional wine deps
-yes | yay -S lib32-giflib lib32-mpg123 lib32-v4l-utils lib32-libxslt lib32-gtk3
-# c# dev
-yes | yay -S dotnet-host dotnet-runtime dotnet-sdk
+if [ -z $1 ]; then
+    yay --save --nocleanmenu --nodiffmenu --noconfirm
+    yes | yay -Syu
+    yes | yay -S rmtrash light acpi_call exa tp_smapi pulseeffects-git picom-tyrone-git xclip sox
+    # optional apps
+    yes | yay -S keynav ncdu dfc pkgfile mtr
+    # optional wine deps
+    yes | yay -S lib32-giflib lib32-mpg123 lib32-v4l-utils lib32-libxslt lib32-gtk3
+    # c# dev
+    yes | yay -S dotnet-host dotnet-runtime dotnet-sdk
 
-# install background
-cp Assets/.bg ~/.bg
+    # install background
+    cp Assets/.bg ~/.bg
+    cp Assets/ding.wav ~/.config/
+fi
 
 
 cp -r .config ~

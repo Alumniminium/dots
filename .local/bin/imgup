@@ -1,6 +1,9 @@
 #!/bin/bash
-path=$@
-filename=$(basename $path)
+path=$1
+filename=$2
+if [ -z $filename ]; then 
+    filename=$(basename $path)
+fi
 # Hello future self, you probably forgot where you keep the ssh keys. They're in your (offline) backups and in your pw manager.
 scp -q $path alumni@cdn.her.st:/home/user-data/www/cdn.her.st/images/$filename
 echo "https://cdn.her.st/images/$filename" | xclip -sel clip
