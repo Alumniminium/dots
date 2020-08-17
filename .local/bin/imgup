@@ -1,0 +1,7 @@
+#!/bin/bash
+path=$@
+filename=$(basename $path)
+# Hello future self, you probably forgot where you keep the ssh keys. They're in your (offline) backups and in your pw manager.
+scp -q $path alumni@cdn.her.st:/home/user-data/www/cdn.her.st/images/$filename
+echo "https://cdn.her.st/images/$filename" | xclip -sel clip
+echo "https://cdn.her.st/images/$filename (added to clipboard)"
