@@ -1,0 +1,11 @@
+#!/bin/bash
+# send notification that backup has been started
+notify-send 'Backup' "Starting backup ($(date +%A))" --icon=emblem-synchronized -u critical
+# Update symlink to Latest to current day of the week
+ssh alumni@192.168.0.2 "ln -sfT /storage/samba-root-disk1/BACKUPS/Ideapad/$(date +%A) /storage/samba-root-disk1/BACKUPS/Ideapad/Latest"
+# Sync everyhting not in the ignorelist to the homeserver
+rsync -zzaAXzOPh --exclude-from=${HOME}/.local/bin/backupignorelist -e "ssh -o Compression=no" / alumni@192.168.0.2:/storage/samba-root-disk1/BACKUPS/Ideapad/Latest
+# send notification that backup has been completed
+notify-send 'Backup' "Finished backup: ($(date +%A))" --icon=emblem-synchronized -u critical
+
+# Homeserver will tar the latest backup and upload it offsite

@@ -105,7 +105,7 @@ super + grave
 Print
 	maim -s ~/$(date +%s).png --hidecursor
 
-# screenshot + upload to img.her.st
+# screenshot + upload to cdn.her.st
 Print + shift
 	maim -s /tmp/upload.png --hidecursor; ~/.local/bin/imgup /tmp/upload.png $(date +%s).png && play ~/.config/ding.wav
 
