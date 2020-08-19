@@ -8,9 +8,9 @@ function run {
 }
 export MONITOR=eDP
 /usr/bin/ideapad-cm enable
-xrandr --output eDP --gamma 0.85
+xrandr --output ${MONITOR} --gamma 0.85
 light -S 75
-RestoreSession eDP &
+RestoreSession ${MONITOR} &
 wal --saturate 1 -i ~/.bg &
 powertop --auto-tune
 xsetroot -cursor_name left_ptr &
@@ -24,3 +24,4 @@ picom --experimental-backends &
 run code &
 run chromium &
 run discord &
+run thunderbird &

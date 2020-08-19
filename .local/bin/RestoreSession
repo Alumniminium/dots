@@ -1,0 +1,12 @@
+#!/bin/sh
+
+export MONITOR=$(xrandr | grep -w 'connected' | cut -d' ' -f 1)
+export WIFI=$(ip a | grep " w" | cut -d ' ' -f 2 | cut -d ':' -f1)
+
+monitor=$1
+if [ -z $monitor ]; then
+    monitor=${MONITOR}
+fi
+bspc monitor $monitor -d          
+pkill polybar
+screen -dmS polybar sh -c 'polybar example'
