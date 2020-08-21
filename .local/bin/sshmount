@@ -1,4 +1,4 @@
 #!/bin/bash
-sshfs	-o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,idmap=user alumni@192.168.0.2:/    	/mnt/homeserver
+sshfs	-o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,idmap=user trbl@192.168.0.2:/    	    /mnt/homeserver
 sshfs	-o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,idmap=user alumni@mail.alumni.re:/	/mnt/mailserver
 sshfs	-o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,idmap=user alumni@backup.her.st:/		/mnt/backupserver
