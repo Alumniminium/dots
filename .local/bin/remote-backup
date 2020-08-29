@@ -1,0 +1,8 @@
+#!/bin/bash
+
+user="alumni"
+host="backup.her.st"
+dest="/BACKUPS/"
+
+# Sync everyhting to the offsite backup server
+rsync -aAXOPh --delete -e "ssh -o Compression=no" /mnt/SDA/Backups/* $user@$host:$dest

@@ -13,4 +13,4 @@ rsync -aAXOPh --exclude-from=${HOME}/.local/bin/backupignorelist -e "ssh -o Comp
 # send notification that backup has been completed
 notify-send 'Backup' "Finished backup: ($(date +%A))" --icon=emblem-synchronized -u critical
 
-# Homeserver will tar the latest backup and upload it offsite
+# Homeserver will take the latest backup and upload it offsite

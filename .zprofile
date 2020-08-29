@@ -1,4 +1,4 @@
-PATH="/usr/local/sbin:/usr/bin/core_perl:/usr/local/bin:/usr/bin"
+PATH="/usr/local/sbin:/usr/bin/core_perl:/usr/local/bin:/usr/bin:$(ruby -e 'puts Gem.user_dir')/bin"
 export PATH
 export PANEL_FIFO="/tmp/panel-fifo"
 export XDG_CONFIG_HOME="$HOME/.config"
