@@ -1,5 +1,13 @@
 #!/bin/sh
 
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export PATH="${PATH}:${HOME}/.local/bin/"
+export PATH="$PATH:${HOME}/.dotnet/tools"
+export PATH="$PATH:${HOME}/.cargo/bin"
+export ZSH="${HOME}/.oh-my-zsh"
+export TERM=xterm-256color
+export MONITOR=eDP
+
 #BSPWM configuration
 bspc config border_width         1
 bspc config window_gap           0
@@ -49,10 +57,10 @@ bspc rule -a Xfce4-settings-manager state=tiled
 bspc rule -a Chromium desktop='^2'  follow=off
 bspc rule -a Code desktop='^1' follow=off
 bspc rule -a Steam desktop='^8'
-bspc rule -a mpv desktop='^6'  follow=on
+bspc rule -a mpv desktop='^6' follow=on
 bspc rule -a discord desktop='^4' follow=off
 bspc rule -a Thunderbird desktop='^5' follow=off
-bspc rule -a catfish state=floating
+
 
 #polybar hidden when fullscreen for vlc, youtube, mpv ...
 #find out the name of your monitor with xrandr

@@ -1,10 +1,3 @@
-clear
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export PATH="${PATH}:${HOME}/.local/bin/"
-export PATH="$PATH:${HOME}/.dotnet/tools"
-export PATH="$PATH:${HOME}/.cargo/bin"
-export ZSH="${HOME}/.oh-my-zsh"
-export TERM=xterm-256color
 ZSH_THEME="lambda-mod"
 plugins=()
 source $ZSH/oh-my-zsh.sh
