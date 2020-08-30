@@ -1,28 +1,37 @@
 #!/bin/bash
 
 # install background
-cp Assets/.bg ~/.bg
-cp Assets/ding.wav ~/.config/
+cp -s $PWD/Assets/.bg "/home/$(whoami)/.bg"
+cp -s $PWD/Assets/ding.wav "/home/$(whoami)/.config/"
 
-cp -r .config ~
-cp -r .local ~
+# install ocnfigs
+echo 'copying .config...'
+cp -rs $PWD/.config/* "/home/$(whoami)/.config/"
+echo 'reloading sxhkd...'
+# reload sxhkd config
+pkill -USR1 -x sxhkd
+
+echo 'copying .local...'
+cp -rs $PWD/.local/* "/home/$(whoami)/.local/"
 echo 'copying /etc gimme root!'
-sudo cp -r etc /
+sudo cp -rs $PWD/etc /
 
 # install font
-echo 'copying //usr/share/fonts/TTF gimme root!'
-sudo cp Assets/ProFontWindows.ttf /usr/share/fonts/TTF
+echo 'copying fonts into /usr/share/fonts/TTF gimme root!'
+sudo cp -s $PWD/Assets/ProFontWindows.ttf /usr/share/fonts/TTF/
+
 
 #bypass installing apps if any arg is passed (fast path)
 if [ -z $1 ]; then
     yay --save --nocleanmenu --nodiffmenu --noconfirm
     yes | yay -Syu
-    yes | yay -S linux-amd rmtrash light acpi_call exa tp_smapi pulseeffects-git \
-    picom-tryone-git xclip sox rmtrash ncdu dfc \
-    pkgfile mtr dotnet-host dotnet-runtime dotnet-sdk \
-    visual-studio-code-bin chromium-vaapi network-manager-applet \
-    discord thunderbird
+    yes | yay -S linux-amd acpi_call-dkms rmtrash light exa tp_smapi pulseeffects-git \
+                 picom-tryone-git xclip sox rmtrash ncdu dfc \
+                 pkgfile mtr dotnet-host dotnet-runtime dotnet-sdk \
+                 visual-studio-code-bin chromium-vaapi network-manager-applet \
+                 discord thunderbird nemo
 
     # optional stuff (wine deps, ..)
     yes | yay -S lib32-giflib lib32-mpg123 lib32-v4l-utils lib32-libxslt lib32-gtk3 keynav 
 fi
+

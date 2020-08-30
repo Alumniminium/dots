@@ -5,12 +5,12 @@ host="192.168.0.2"
 dest="/mnt/SDA/Backups/Ideapad/Latest"
 
 # send notification that backup has been started
-notify-send 'Backup' "Starting backup ($(date +%A))" --icon=emblem-synchronized -u critical
+/usr/bin/notify-send 'Backup' "Starting backup ($(date +%A))" --icon=emblem-synchronized -u critical
 # Update symlink to Latest to current day of the week
 ssh $user@$host "ln -sfT /mnt/SDA/Backups/Ideapad/$(date +%A) $dest"
 # Sync everyhting not in the ignorelist to the homeserver
 rsync -aAXOPh --exclude-from=${HOME}/.local/bin/backupignorelist -e "ssh -o Compression=no" / $user@$host:$dest
 # send notification that backup has been completed
-notify-send 'Backup' "Finished backup: ($(date +%A))" --icon=emblem-synchronized -u critical
+/usr/bin/notify-send 'Backup' "Finished backup: ($(date +%A))" --icon=emblem-synchronized -u critical
 
 # Homeserver will take the latest backup and upload it offsite

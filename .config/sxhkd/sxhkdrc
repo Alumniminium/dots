@@ -87,7 +87,7 @@ super + f
 
 # filemanager
 super + e
-    thunar
+    nemo
 
 # file launcher
 super + space
@@ -107,7 +107,7 @@ Print
 
 # screenshot + upload to cdn.her.st
 Print + shift
-	maim -s /tmp/upload.png --hidecursor; /usr/bin/cwebp /tmp/upload.png -o /tmp/upload.webp; imgup /tmp/upload.webp $(date +%s).webp; play ~/.config/ding.wav
+	imgup upload $(date +%s)
 
 # Hardware keys
 

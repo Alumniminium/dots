@@ -18,7 +18,6 @@ alias ls='exa -l --ignore-glob="*~" --group-directories-first'
 alias mv='amv -g'
 alias dfc='dfc -WwT -p /dev,alumni,root'
 alias yay='yay --nopgpfetch --mflags --skippgpcheck'
-alias xclip="xclip -selection c"
 alias trash='rmtrash'
 alias rm='echo "use trash"; rm -i'
 alias micro='echo "nope, u gonna use vim"; sleep 3; vim'

@@ -1,10 +1,13 @@
 #!/bin/bash
-path=$1
+upload=$1
 filename=$2
-if [ -z $filename ]; then 
-    filename=$(basename $path)
+
+/usr/bin/maim -s /tmp/$filename.png --hidecursor
+
+if [ $upload = 'upload' ]; then
+    /usr/bin/cwebp /tmp/$filename.png -o /tmp/upload.webp
+    /usr/bin/scp -q /tmp/upload.webp alumni@cdn.her.st:/home/user-data/www/cdn.her.st/images/$filename.webp
+    play ~/.config/ding.wav
+    echo "https://cdn.her.st/images/$filename.webp" | xsel --clipboard
+    echo "https://cdn.her.st/images/$filename.webp (added to clipboard)" | tee /home/alu/.imgup
 fi
-# Hello future self, you probably forgot where you keep the ssh keys. They're in your (offline) backups and in your pw manager.
-scp -q $path alumni@cdn.her.st:/home/user-data/www/cdn.her.st/images/$filename
-echo "https://cdn.her.st/images/$filename" | xclip -sel clip
-echo "https://cdn.her.st/images/$filename (added to clipboard)"
