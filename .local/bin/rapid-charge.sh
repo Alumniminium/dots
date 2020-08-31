@@ -1,6 +1,11 @@
 #!/bin/bash
 control=$1
 
+if [ $(whoami) != 'root' ]; then
+	echo 'this script requires root (try sudo)'
+	exit
+fi
+
 if [ -z $control ]; then
 	control='invalid'
 fi
