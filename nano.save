@@ -1,0 +1,1 @@
+"amdgpu-pci-0300\nAdapter: PCI adapter\nvddgfx:           N/A  \nvddnb:            N/A  \nedge:         +45.0°C  (crit =  +0.0°C, hyst =  +0.0°C)\n\nBAT0-acpi-0\nAdapter: ACPI interface\nin0:          16.25 V  \n\niwlwifi_1-virtual-0\nAdapter: Virtual device\ntemp1:        +46.0°C  \n\nk10temp-pci-00c3\nAdapter: PCI adapter\nTctl:         +47.4°C  \nTdie:         +47.4°C  \n\n"

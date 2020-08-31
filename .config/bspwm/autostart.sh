@@ -13,7 +13,7 @@ RestoreSession &
 wal --saturate 1 -i ~/.bg &
 sudo powertop --auto-tune
 xsetroot -cursor_name left_ptr &
-sxhkd &
+DISPLAY=:0 sxhkd &> /home/alu/sxhkd.log &
 volnoti &
 keynav &
 run nm-applet &
@@ -23,3 +23,4 @@ run code &
 run chromium &
 run discord &
 run thunderbird &
+run termite &

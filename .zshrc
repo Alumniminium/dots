@@ -1,7 +1,10 @@
+export TERM=xterm-256color
+export ZSH="${HOME}/.oh-my-zsh"
 ZSH_THEME="lambda-mod"
-plugins=()
 source $ZSH/oh-my-zsh.sh
 (cat ~/.cache/wal/sequences &)
+cd $HOME
+
 alias yt='f() { mpv $1    ytdl-format="bestvideo[height<=?1080][vcodec!=vp9]+bestaudio/best" };f'
 alias chmox='chmod'
 alias cls='clear && ls'
@@ -14,7 +17,11 @@ alias yay='yay --nopgpfetch --mflags --skippgpcheck'
 alias trash='rmtrash'
 alias rm='echo "use trash"; rm -i'
 alias micro='echo "nope, u gonna use vim"; sleep 3; vim'
+alias cd="workspace_cd"
 
+function workspace_cd() {
+    cd $@ && [ -f ".workspace" ] && source .workspace
+}
 #THE WELCOME MESSAGE
 
 clear
