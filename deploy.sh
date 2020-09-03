@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cp -s $PWD/.xinitrc "/home/$(whoami)/"
 cp -s $PWD/.zprofile "/home/$(whoami)/"
 cp -s $PWD/.zshrc "/home/$(whoami)/"

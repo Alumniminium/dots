@@ -1,0 +1,15 @@
+{
+    "configVersion": 1,
+    "displays": [
+        {
+            "name": "eDP",
+            "vibrance": 150
+        },
+        {
+            "name": "HDMI-A-0",
+            "vibrance": 100
+        }
+    ],
+    "programs": [
+    ]
+}

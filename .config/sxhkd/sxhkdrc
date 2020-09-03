@@ -95,11 +95,11 @@ super + space
 
 # terminal
 super + z
-	termite
+	termite -d ~
 
 # floating terminal
 super + grave
-  bspc rule -a \* -o state=floating && termite
+  bspc rule -a \* -o state=floating && termite -d ~
 
 # screenshot
 Print

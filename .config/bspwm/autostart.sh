@@ -9,6 +9,7 @@ function run {
 sudo /usr/bin/ideapad-cm enable
 xrandr --output ${MONITOR} --gamma 0.85
 light -S 75
+vibrantLinux --hidden &
 RestoreSession &
 wal --saturate 1 -i ~/.bg &
 sudo powertop --auto-tune
@@ -19,6 +20,7 @@ keynav &
 run nm-applet &
 picom --experimental-backends &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
 run code &
 run chromium &
 run discord &
