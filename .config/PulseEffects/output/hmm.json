@@ -118,7 +118,7 @@
             "mode": "IIR",
             "num-bands": "10",
             "input-gain": "0",
-            "output-gain": "-4",
+            "output-gain": "0",
             "split-channels": "false",
             "left": {
                 "band0": {
@@ -360,9 +360,9 @@
             "makeup": "0"
         },
         "limiter": {
-            "state": "false",
-            "input-gain": "0",
-            "limit": "0",
+            "state": "true",
+            "input-gain": "2",
+            "limit": "-1",
             "lookahead": "5",
             "release": "50",
             "auto-level": "false",
@@ -623,7 +623,7 @@
             "use-geometric-mean": "true",
             "input-gain": "0",
             "output-gain": "0",
-            "target": "-18",
+            "target": "-16",
             "weight-m": "1",
             "weight-s": "1",
             "weight-i": "1"

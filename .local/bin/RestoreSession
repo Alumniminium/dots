@@ -1,12 +1,26 @@
 #!/bin/sh
 
-export MONITOR=$(xrandr | grep -w 'connected' | cut -d' ' -f 1)
+multi='0'
+while IFS= read -r line; do
+	if [ "$line" = "HDMI-A-0" ]; then
+		multi='1'
+	fi
+done <<< $(xrandr | grep -w 'connected' | cut -d' ' -f 1)
+
+
+if [ "$multi" = "1" ]; then
+	export MONITOR="HDMI-A-0"
+	xrandr --output eDP --scale-from 2560x1440
+	xrandr --output HDMI-A-0 --mode 2560x1440
+else
+	export MONITOR="eDP"
+	xrandr --output HDMI-A-0 --off
+	xrandr --output eDP --mode 1920x1080 --scale-from 1920x1080
+fi
+
 export WIFI=$(ip a | grep " w" | cut -d ' ' -f 2 | cut -d ':' -f1)
 
-monitor=$1
-if [ -z $monitor ]; then
-    monitor=${MONITOR}
-fi
-bspc monitor $monitor -d          
+bspc monitor $MONITOR -d          
 pkill polybar
 screen -dmS polybar sh -c 'polybar example'
+feh --bg-fill .bg

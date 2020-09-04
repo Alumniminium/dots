@@ -9,7 +9,7 @@ cursor_blink = system
 cursor_shape = block
 dynamic_title = false
 filter_unmatched_urls = true
-font = Monospace 11
+font = ProFontWindows 14
 geometry = 900x650
 highlight = #2f2f2f
 icon_name = terminal
@@ -18,12 +18,12 @@ mouse_autohide = false
 scroll_on_output = false
 scroll_on_keystroke = true
 scrollback_lines = 15000
-size_hints = false
+size_hints = true
 search_wrap = true
 urgent_on_bell = true
 
 [colors]
-background = rgba(40, 42, 54, 0.80)
+background = rgba(40, 42, 54, 0.5)
 
 # Fallback values below this line. Changed by `wal` anyways
 

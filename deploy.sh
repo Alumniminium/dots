@@ -33,7 +33,7 @@ if [ -z $1 ]; then
                  picom-tryone-git xclip sox rmtrash ncdu dfc zsh \
                  pkgfile mtr dotnet-host dotnet-runtime dotnet-sdk \
                  visual-studio-code-bin chromium-vaapi network-manager-applet \
-                 discord thunderbird nemo
+                 discord thunderbird nemo vibrantlinux-git
     # optional stuff (wine deps, ..)
     yes | yay -S lib32-giflib lib32-mpg123 lib32-v4l-utils lib32-libxslt lib32-gtk3 keynav
 
