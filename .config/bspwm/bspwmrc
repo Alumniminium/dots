@@ -56,10 +56,11 @@ bspc rule -a Xfce4-settings-manager state=tiled
 
 bspc rule -a Chromium desktop='^2'  follow=off
 bspc rule -a Code desktop='^1' follow=off
-bspc rule -a Steam desktop='^8'
+bspc rule -a Steam desktop='^8' follow=off state=floating
 bspc rule -a mpv desktop='^6' follow=on
 bspc rule -a discord desktop='^4' follow=off
 bspc rule -a Thunderbird desktop='^5' follow=off
+bspc rule -a Pulseeffects desktop='^10' follow=off
 
 
 #polybar hidden when fullscreen for vlc, youtube, mpv ...
