@@ -10,7 +10,8 @@ done <<< $(xrandr | grep -w 'connected' | cut -d' ' -f 1)
 
 if [ "$multi" = "1" ]; then
 	export MONITOR="HDMI-A-0"
-	xrandr --output eDP --scale-from 2560x1440
+	xrandr --output eDP --off
+	#xrandr --output eDP --scale-from 2560x1440
 	xrandr --output HDMI-A-0 --mode 2560x1440
 else
 	export MONITOR="eDP"
