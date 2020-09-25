@@ -40,6 +40,9 @@ super + shift + {1-9,0}
 super + shift + {Left,Down,Up,Right}
 	euclid_mover {west,south,north,east}
 
+alt + Tab
+	bspc node -f next.local
+
 # move window FOCUS (select other windows without mouse)
 
 super +  {Left,Down,Up,Right}
@@ -112,13 +115,13 @@ Print + shift
 # Hardware keys
 
 XF86AudioRaiseVolume
-	/usr/bin/volumeOSD up &
+	volumeOSD up &
 
 XF86AudioLowerVolume
-    /usr/bin/volumeOSD down &
+    volumeOSD down &
 
 XF86AudioMute
-    /usr/bin/volumeOSD mute &
+    volumeOSD mute &
 	
 XF86MonBrightnessDown
  light -U 5

@@ -1,0 +1,23 @@
+case "$1" in
+    "up")
+         $(pactl set-sink-volume 0 +1%)
+          ;;
+  "down")
+         $(pactl set-sink-volume 0 -1%)        
+          ;;
+  "mute")
+         $(pamixer -t)
+          ;;
+esac
+STATE=$(pamixer --get-mute)
+
+# Show volume with volnoti
+if [[ $STATE = "true" ]]; then
+  volnoti-show -m
+  notify-send.py a --hint boolean:deadd-notification-center:true \
+               int:id:2 boolean:state:true type:string:buttons
+else
+  volnoti-show $(pamixer --get-volume)
+  notify-send.py a --hint boolean:deadd-notification-center:true \
+               int:id:2 boolean:state:false type:string:buttons
+fi

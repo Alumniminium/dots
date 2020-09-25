@@ -1,4 +1,18 @@
 #!/bin/bash
-sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,idmap=user trbl@192.168.0.2:/    	/mnt/homeserver
-sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,idmap=user alumni@mail.alumni.re:/	/mnt/mailserver
-sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,idmap=user alumni@backup.her.st:/   /mnt/backupserver
+
+arg=$1
+
+if [ -z $arg ]; then
+    echo "sshmount [local, remote, mail, backup"
+    exit
+fi
+
+if [ $arg = "local" ]; then
+    sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,idmap=user trbl@192.168.0.2:/    	/mnt/homeserver
+elif [ $arg = "remote" ]; then
+    sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,idmap=user trbl@dynamic.alumni.re:/ /mnt/homeserver
+elif [ $arg = "mail" ]; then
+    sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,idmap=user alumni@mail.alumni.re:/	/mnt/mailserver
+elif [ $arg = "backup" ]; then
+    sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,idmap=user alumni@backup.her.st:/   /mnt/backupserver
+fi

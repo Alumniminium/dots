@@ -53,15 +53,18 @@ bspc rule -a Peek state=floating
 #Tiled applications
 bspc rule -a Gnome-disks state=tiled
 bspc rule -a Xfce4-settings-manager state=tiled
-
 bspc rule -a Chromium desktop='^2'  follow=off
 bspc rule -a Code desktop='^1' follow=off
 bspc rule -a Steam desktop='^8' follow=off state=floating
 bspc rule -a mpv desktop='^6' follow=on
 bspc rule -a discord desktop='^4' follow=off
 bspc rule -a Thunderbird desktop='^5' follow=off
-bspc rule -a Pulseeffects desktop='^10' follow=off
 
+bspc rule -a Pulseeffects desktop='^10' follow=off
+bspc rule -a SVPManager desktop='^10' follow=off state=tiled
+
+bspc rule -a RimWorldLinux desktop='^7' follow=off state=tiled
+bspc rule -a Godot_Engine desktop='^7' follow=off state=tiled
 
 #polybar hidden when fullscreen for vlc, youtube, mpv ...
 #find out the name of your monitor with xrandr

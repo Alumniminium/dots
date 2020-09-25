@@ -3,11 +3,7 @@
     "displays": [
         {
             "name": "eDP",
-            "vibrance": 150
-        },
-        {
-            "name": "HDMI-A-0",
-            "vibrance": 125
+            "vibrance": 145
         }
     ],
     "programs": [

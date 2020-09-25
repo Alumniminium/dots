@@ -23,9 +23,12 @@ font-0 = "ProFontWindows:style=Regular:pixelsize=14;3"
 font-1 = "FontAwesome:pixelsize=10;1"
 font-2 = "Font Awesome 5 Brands:style=Regular:pixelsize=10;1"
 font-3 = "Dejavu sans:style=regular:pixelsize=10;1"
-modules-left = bspwm battery
-modules-center = cputemp cpuload freqmon mem spacer gpuload gpuvram gputemp
-modules-right = wifi openvpn-isrunning info-pingrtt date
+modules-center = bspwm
+modules-left = cputemp freqmon mem
+modules-right = battery wifi openvpn-isrunning info-pingrtt date
+#modules-left = bspwm battery
+#modules-center = cputemp cpuload freqmon mem spacer gpuload gpuvram gputemp
+#modules-right = wifi openvpn-isrunning info-pingrtt date
 tray-position = right
 tray-maxsize = 10
 tray-scale = 1.25
@@ -67,7 +70,7 @@ ramp-signal-2 = "%{F#e000a2}%{F-}"
 ramp-signal-1 = "%{F#ff5b77}%{F-}"
 ramp-signal-0 = "I can't even.."
 format-connected = <ramp-signal><label-connected>
-label-connected = "%{F#08fee4} %essid%"
+label-connected = "%{F#08fee4}%essid%"
 
 [module/date]
 type = internal/date
@@ -131,6 +134,6 @@ interval = 2
 
 [module/spacer]
 type = custom/script
-exec = echo " | "
+exec = echo "|"
 tail = false
 interval = 1
