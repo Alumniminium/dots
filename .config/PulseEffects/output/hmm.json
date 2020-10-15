@@ -6,8 +6,6 @@
         "use-custom-color": "false",
         "fill": "true",
         "show-bar-border": "true",
-        "scale": "1",
-        "exponent": "1",
         "sampling-freq": "10",
         "line-width": "2",
         "type": "Bars",
@@ -31,7 +29,7 @@
         ]
     },
     "output": {
-        "blacklist": "",
+        "blocklist": "",
         "plugins_order": [
             "autogain",
             "equalizer",
@@ -618,7 +616,7 @@
             }
         },
         "autogain": {
-            "state": "false",
+            "state": "true",
             "detect-silence": "true",
             "use-geometric-mean": "true",
             "input-gain": "0",

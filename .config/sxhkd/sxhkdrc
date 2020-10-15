@@ -90,7 +90,7 @@ super + f
 
 # filemanager
 super + e
-    nemo
+    pcmanfm
 
 # file launcher
 super + space
