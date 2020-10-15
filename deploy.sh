@@ -35,7 +35,7 @@ if [ -z $1 ]; then
                  visual-studio-code-bin chromium-vaapi network-manager-applet \
                  discord thunderbird nemo vibrantlinux-git figlet \
                  deadd-notification-center-bin python-pip
-    pip install notify-send.py
+    pip install notify-send.py && sudo pip install notify-send.py
     # optional stuff (wine deps, ..)
     yes | yay -S lib32-giflib lib32-mpg123 lib32-v4l-utils lib32-libxslt lib32-gtk3 keynav
 

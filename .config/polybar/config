@@ -23,12 +23,15 @@ font-0 = "ProFontWindows:style=Regular:pixelsize=14;3"
 font-1 = "FontAwesome:pixelsize=10;1"
 font-2 = "Font Awesome 5 Brands:style=Regular:pixelsize=10;1"
 font-3 = "Dejavu sans:style=regular:pixelsize=10;1"
-modules-center = bspwm
-modules-left = cputemp freqmon mem
-modules-right = battery wifi openvpn-isrunning info-pingrtt date
+#modules-center = bspwm
+#modules-left = cputemp freqmon mem
+#modules-right = battery wifi wireguard-active info-pingrtt date
 #modules-left = bspwm battery
 #modules-center = cputemp cpuload freqmon mem spacer gpuload gpuvram gputemp
-#modules-right = wifi openvpn-isrunning info-pingrtt date
+#modules-right = wifi wireguard-active info-pingrtt date
+modules-left = bspwm battery
+modules-center = cputemp cpuload freqmon mem
+modules-right = wifi wireguard-active info-pingrtt date
 tray-position = right
 tray-maxsize = 10
 tray-scale = 1.25
@@ -92,9 +95,9 @@ type = custom/script
 exec = ~/.config/polybar/info-pingrtt.sh
 interval = 5
 
-[module/openvpn-isrunning]
+[module/wireguard-active]
 type = custom/script
-exec =  ~/.config/polybar/openvpn-isrunning.sh
+exec =  ~/.config/polybar/wireguard-active.sh
 interval = 10
 
 [module/cpuload]
