@@ -27,11 +27,11 @@ font-3 = "Dejavu sans:style=regular:pixelsize=10;1"
 #modules-left = cputemp freqmon mem
 #modules-right = battery wifi wireguard-active info-pingrtt date
 #modules-left = bspwm battery
-#modules-center = cputemp cpuload freqmon mem spacer gpuload gpuvram gputemp
+#modules-center = cputemp cpu freqmon mem spacer gpuload gpuvram gputemp
 #modules-right = wifi wireguard-active info-pingrtt date
 modules-left = bspwm battery
-modules-center = cputemp cpuload freqmon mem
-modules-right = wifi wireguard-active info-pingrtt date
+modules-center = cputemp cpu freqmon mem
+modules-right = backlight wifi wireguard-active info-pingrtt date
 tray-position = right
 tray-maxsize = 10
 tray-scale = 1.25
@@ -85,6 +85,18 @@ date-alt = %Y-%m-%d%
 type = internal/memory
 label = RAM: %percentage_used%%
 
+[module/backlight]
+type = internal/backlight
+; ls /sys/class/backlight/
+card = amdgpu_bl0
+format = <ramp> 
+label = BL: %percentage%%
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
 [module/battery]
 type = custom/script
 exec = ~/.config/polybar/battery.sh
@@ -100,11 +112,10 @@ type = custom/script
 exec =  ~/.config/polybar/wireguard-active.sh
 interval = 10
 
-[module/cpuload]
-type = custom/script
-exec = ~/.config/polybar/cpu.sh
-tail = false
-interval = 1
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+label = CPU %percentage%%
 
 [module/freqmon]
 type = custom/script

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-cp -s $PWD/.xinitrc "/home/$(whoami)/"
 cp -s $PWD/.zprofile "/home/$(whoami)/"
 cp -s $PWD/.zshrc "/home/$(whoami)/"
 cp -s $PWD/.oh-my-zsh/themes/* "/home/$(whoami)/.oh-my-zsh/themes/"

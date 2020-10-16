@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "CPU: $(printf %02d "$(top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4}')")%"
+usage=$(mpstat 1 1 | awk 'END{print 100-$NF"%"}')
+echo "CPU: $usage"

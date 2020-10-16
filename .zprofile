@@ -6,6 +6,8 @@ export XDG_CONFIG_DIRS=/usr/etc/xdg:/etc/xdg
 export PANEL_FIFO PANEL_HEIGHT PANEL_FONT_FAMILY
 export BROWSER=/usr/bin/chromium
 export EDITOR=/usr/bin/micro
+export TERMINAL=/usr/bin/termite
+
 # Set MONITOR to first connected display output
 export MONITOR=$(xrandr | grep -w 'connected' | cut -d' ' -f 1)
 # fix java applications not rendering
