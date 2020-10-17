@@ -26,4 +26,3 @@ run chromium &
 run discord &
 run thunderbird &
 run termite &
-run sidebar.sh &

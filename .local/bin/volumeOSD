@@ -1,3 +1,5 @@
+#!/bin/bash
+
 case "$1" in
     "up")
          $(pactl set-sink-volume 0 +1%)
