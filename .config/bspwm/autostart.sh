@@ -14,7 +14,7 @@ RestoreSession &
 wal --saturate 1 -i ~/.bg &
 sudo powertop --auto-tune
 xsetroot -cursor_name left_ptr &
-DISPLAY=:0 sxhkd &> /home/alu/sxhkd.log &
+DISPLAY=:0 sxhkd &> $HOME/sxhkd.log &
 volnoti &
 keynav &
 run nm-applet &
