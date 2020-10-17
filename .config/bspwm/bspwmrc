@@ -1,18 +1,4 @@
 #!/bin/sh
-
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export PATH="${PATH}:${HOME}/.local/bin/"
-export PATH="$PATH:${HOME}/.dotnet/tools"
-export PATH="$PATH:${HOME}/.cargo/bin"
-export ZSH="${HOME}/.oh-my-zsh"
-export TERM=xterm-256color
-export MONITOR=eDP
-
-touch $HOME/.dbus/Xdbus
-chmod 600 $HOME/.dbus/Xdbus
-env | grep DBUS_SESSION_BUS_ADDRESS > $HOME/.dbus/Xdbus
-echo 'export DBUS_SESSION_BUS_ADDRESS' >> $HOME/.dbus/Xdbus
-
 pidof bspswallow || bspswallow &
 
 #BSPWM configuration
@@ -60,18 +46,26 @@ bspc rule -a Peek state=floating
 #Tiled applications
 bspc rule -a Gnome-disks state=tiled
 bspc rule -a Xfce4-settings-manager state=tiled
-bspc rule -a Chromium desktop='^2'  follow=off
+
 bspc rule -a Code desktop='^1' follow=off
-bspc rule -a Steam desktop='^8' follow=off state=floating
-bspc rule -a mpv desktop='^6' follow=on
+
+bspc rule -a Chromium desktop='^2'  follow=off
+
 bspc rule -a discord desktop='^4' follow=off
+bspc rule -a element desktop='^4' follow=off
+
 bspc rule -a Thunderbird desktop='^5' follow=off
+
+bspc rule -a mpv desktop='^6' follow=on
+
+bspc rule -a RimWorldLinux desktop='^7' follow=off state=tiled
+bspc rule -a Godot_Engine desktop='^7' follow=off state=tiled
+
+bspc rule -a Steam desktop='^8' follow=off state=floating
 
 bspc rule -a Pulseeffects desktop='^10' follow=off
 bspc rule -a SVPManager desktop='^10' follow=off state=tiled
 
-bspc rule -a RimWorldLinux desktop='^7' follow=off state=tiled
-bspc rule -a Godot_Engine desktop='^7' follow=off state=tiled
 
 #polybar hidden when fullscreen for vlc, youtube, mpv ...
 #find out the name of your monitor with xrandr

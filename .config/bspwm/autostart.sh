@@ -6,23 +6,24 @@ function run {
     $@&
   fi
 }
-sudo /usr/bin/ideapad-cm enable
-xrandr --output ${MONITOR} --gamma 0.85
-light -S 75
-vibrantLinux --hidden &
-RestoreSession &
-wal --saturate 1 -i ~/.bg &
-sudo powertop --auto-tune
+
+sxhkd &> $HOME/sxhkd.log &
 xsetroot -cursor_name left_ptr &
-DISPLAY=:0 sxhkd &> $HOME/sxhkd.log &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
+sudo powertop --auto-tune
+
+xrandr --output ${MONITOR} --gamma 0.85
+picom --experimental-backends &
+vibrantLinux --hidden &
+wal --saturate 1 -i ~/.bg &
+
 volnoti &
 keynav &
 run nm-applet &
-picom --experimental-backends &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-/usr/lib/xfce4/notifyd/xfce4-notifyd &
 run code &
 run chromium &
 run discord &
+run element-desktop &
 run thunderbird &
-run termite &
+RestoreSession &
