@@ -28,16 +28,14 @@ sudo cp -s $PWD/Assets/ProFontWindows.ttf /usr/share/fonts/TTF/
 if [ -z $1 ]; then
     yay --save --nocleanmenu --nodiffmenu --noconfirm
     yes | yay -Syu
-    yes | yay -S linux-amd acpi_call-dkms rmtrash light exa tp_smapi pulseeffects-git \
-                 picom-tryone-git xclip sox rmtrash ncdu dfc zsh \
-                 pkgfile mtr dotnet-host dotnet-runtime dotnet-sdk \
-                 visual-studio-code-bin chromium-vaapi network-manager-applet \
-                 discord thunderbird nemo vibrantlinux-git figlet \
-                 deadd-notification-center-bin python-pip
+    yes | yay -S linux-amd linux-amd-headers acpi_call-dkms rmtrash light exa tp_smapi pulseeffects-git \
+                 lib32-giflib lib32-mpg123 lib32-v4l-utils lib32-libxslt lib32-gtk3 keynav \
+                 steam surf ly mpv clementine picom-tryone-git xclip sox rmtrash ncdu dfc zsh \
+                 wireguard-dkms wireguard-tools pkgfile mtr dotnet-host dotnet-runtime dotnet-sdk \
+                 ruby-cairo visual-studio-code-bin chromium-vaapi network-manager-applet gamemode \
+                 discord thunderbird pcmanfm vibrantlinux-git figlet mysql-workbench redis-desktop-manager \
+                 wine-nine deadd-notification-center-bin python-pip wine-tkg-fsync-vkd3d-opt-git
     pip install notify-send.py && sudo pip install notify-send.py
-    # optional stuff (wine deps, ..)
-    yes | yay -S lib32-giflib lib32-mpg123 lib32-v4l-utils lib32-libxslt lib32-gtk3 keynav
-
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 

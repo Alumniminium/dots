@@ -46,6 +46,7 @@ bspc rule -a Peek state=floating
 #Tiled applications
 bspc rule -a Gnome-disks state=tiled
 bspc rule -a Xfce4-settings-manager state=tiled
+bspc rule -a Surf state=tiled follow=off
 
 bspc rule -a Code desktop='^1' follow=off
 

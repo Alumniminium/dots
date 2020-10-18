@@ -13,7 +13,7 @@ if [ "$do" = "status" ]; then
     if [ "$connection" = "$WIREGUARD_CONNECTION" ]; then
         notify-send.py a --hint boolean:deadd-notification-center:true int:id:1 boolean:state:false type:string:buttons >/dev/null
     else
-        notify-send.py a --hint boolean:deadd-notification-center:true int:id:1 boolean:state:true type:string:buttons >/dev/null
+        notify-send.py a --hint boolean:deadd-notification-center:true int:id:1 boolean:state:false type:string:buttons >/dev/null
     fi
 
 elif [ "$do" = "toggle" ]; then
