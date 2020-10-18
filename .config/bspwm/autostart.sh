@@ -19,6 +19,9 @@ vibrantLinux --hidden &
 wal --saturate 1 -i ~/.bg &
 
 volnoti &
+mpd &
+mpDris2 & # makes playerctl work for mpd
+
 keynav &
 run nm-applet &
 run code &

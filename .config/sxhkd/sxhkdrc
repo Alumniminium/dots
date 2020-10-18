@@ -122,6 +122,18 @@ XF86AudioLowerVolume
 
 XF86AudioMute
     volumeOSD mute &
+
+XF86AudioPlay
+	playerctl play-pause --player=mpd
+
+XF86AudioStop
+	playerctl stop --player=mpd
+
+XF86AudioPrev
+	playerctl previous --player=mpd
+
+XF86AudioNext
+	playerctl next --player=mpd
 	
 XF86MonBrightnessDown
  light -U 5
