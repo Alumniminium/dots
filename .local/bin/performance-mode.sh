@@ -11,10 +11,14 @@ fi
 
 if [ $control = 'extreme' ]; then
 	echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0012B001' | sudo tee /proc/acpi/call
+	sudo cpupower frequency-set -g performance
+	sudo ryzenadj -a 23000 -b 23000 -c 23000
 elif [ $control = 'intelligent' ]; then
 	echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x000FB001' | sudo tee /proc/acpi/call
 elif [ $control = 'battery' ]; then
 	echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0013B001' | sudo tee /proc/acpi/call
+	sudo cpupower frequency-set -g powersave
+	sudo ryzenadj -a 3000 -b 3000 -c 3000
 elif [ $control = 'status' ]; then
 	echo '\_SB.PCI0.LPC0.EC0.SPMO' | sudo tee /proc/acpi/call
 	state=$(sudo cat /proc/acpi/call | cut -d '' -f1)
@@ -30,8 +34,12 @@ elif [ $control = 'toggle' ]; then
 	state=$(sudo cat /proc/acpi/call | cut -d '' -f1)
 	if [ $state = "0x0" ]; then
 		echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0013B001' | sudo tee /proc/acpi/call
+		sudo cpupower frequency-set -g powersave
+		sudo ryzenadj -a 3000 -b 3000 -c 3000
 	else
 		echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x000FB001' | sudo tee /proc/acpi/call
+		sudo cpupower frequency-set -g schedutil
+		sudo ryzenadj -a 15000 -b 15000 -c 15000
 	fi
 else
 	echo $usage
