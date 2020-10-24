@@ -57,6 +57,8 @@ bspc rule -a element        desktop='^4'    follow=off  state=tiled
 
 bspc rule -a Thunderbird    desktop='^5'    follow=off  state=tiled
 
+bspc rule -a mpv            desktop='^6'    follow=on   state=floating      rectangle=640x360+1255+100
+
 bspc rule -a RimWorldLinux  desktop='^7'    follow=off  state=floating      rectangle=1600x900+0+0      center=true
 bspc rule -a eocapp.exe     desktop='^7'    follow=off  state=floating      rectangle=1600x900+0+0      center=true
 bspc rule -a Godot_Engine   desktop='^7'    follow=off  state=tiled         
