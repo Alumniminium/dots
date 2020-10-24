@@ -39,7 +39,6 @@ bspc rule -a Gimp state=fullscreen
 
 #Floating applications
 bspc rule -a feh state=floating
-bspc rule -a mpv state=floating sticky=on
 bspc rule -a Pavucontrol state=floating sticky=on
 bspc rule -a Peek state=floating
 
@@ -48,23 +47,23 @@ bspc rule -a Gnome-disks state=tiled
 bspc rule -a Xfce4-settings-manager state=tiled
 bspc rule -a Surf state=tiled follow=off
 
-bspc rule -a Code desktop='^1' follow=off
+bspc rule -a Code           desktop='^1'    follow=off
 
-bspc rule -a Chromium desktop='^2'  follow=off rectangle=1280x1024+300+35 state=floating
-bspc rule -a Brave desktop='^2' follow=off rectangle=1280x1024+300+35 state=floating
+spc rule -a Chromium        desktop='^2'    follow=off  state=floating      rectangle=1280x1024+0+0     center=true
+spc rule -a Brave-browser   desktop='^2'    follow=off  state=floating      rectangle=1280x1024+0+0     center=true
 
-bspc rule -a discord desktop='^4' follow=off
-bspc rule -a element desktop='^4' follow=off
+bspc rule -a discord        desktop='^4'    follow=off  state=tiled
+bspc rule -a element        desktop='^4'    follow=off  state=tiled
 
-bspc rule -a Thunderbird desktop='^5' follow=off
+bspc rule -a Thunderbird    desktop='^5'    follow=off  state=tiled
 
-bspc rule -a RimWorldLinux desktop='^7' follow=off state=tiled
-bspc rule -a Godot_Engine desktop='^7' follow=off state=tiled
+bspc rule -a RimWorldLinux  desktop='^7'    follow=off  state=floating      rectangle=1600x900+0+0      center=true
+bspc rule -a Godot_Engine   desktop='^7'    follow=off  state=tiled         
 
-bspc rule -a Steam desktop='^8' follow=off state=floating
+bspc rule -a Steam          desktop='^8'    follow=off  state=floating      rectangle=1600x900+0+0      center=true
 
-bspc rule -a Pulseeffects desktop='^10' follow=off
-bspc rule -a SVPManager desktop='^10' follow=off state=tiled
+bspc rule -a Pulseeffects   desktop='^10'   follow=off  state=tiled
+bspc rule -a SVPManager     desktop='^10'   follow=off  state=tiled
 
 
 #polybar hidden when fullscreen for vlc, youtube, mpv ...
