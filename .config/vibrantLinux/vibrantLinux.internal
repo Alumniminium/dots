@@ -4,6 +4,10 @@
         {
             "name": "eDP",
             "vibrance": 198
+        },
+        {
+            "name": "HDMI-A-0",
+            "vibrance": 110
         }
     ],
     "programs": [

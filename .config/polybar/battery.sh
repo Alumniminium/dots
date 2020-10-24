@@ -18,8 +18,10 @@ fi
 
 if [ "$status" = "Discharging" ]; then
     echo "$icon $time ($charge%) "
-elif [ "$status" = "Unknown" ]; then
-    echo "$icon ($charge%) "
 elif [ "$status" = "Charging" ]; then
     echo "$icon $time ($charge%) "
+elif [ "$status" = "Unknown" ]; then
+    echo "$icon ($charge%) "
+elif [ "$status" = "Full" ]; then
+    echo "$icon ($charge%) "
 fi
