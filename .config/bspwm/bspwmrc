@@ -50,14 +50,13 @@ bspc rule -a Surf state=tiled follow=off
 
 bspc rule -a Code desktop='^1' follow=off
 
-bspc rule -a Chromium desktop='^2'  follow=off
+bspc rule -a Chromium desktop='^2'  follow=off rectangle=1280x1024+300+35 state=floating
+bspc rule -a Brave desktop='^2' follow=off rectangle=1280x1024+300+35 state=floating
 
 bspc rule -a discord desktop='^4' follow=off
 bspc rule -a element desktop='^4' follow=off
 
 bspc rule -a Thunderbird desktop='^5' follow=off
-
-bspc rule -a mpv desktop='^6' follow=on
 
 bspc rule -a RimWorldLinux desktop='^7' follow=off state=tiled
 bspc rule -a Godot_Engine desktop='^7' follow=off state=tiled
