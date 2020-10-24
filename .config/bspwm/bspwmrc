@@ -2,24 +2,24 @@
 pidof bspswallow || bspswallow &
 
 #BSPWM configuration
-bspc config border_width         1
-bspc config window_gap           0
-bspc config top_padding          22
-bspc config bottom_paddin        0       
-bspc config left_padding         0
-bspc config right_padding        0
-bspc config single_monocle       false
-bspc config click_to_focus       true
-bspc config split_ratio          0.51
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
-bspc config focus_by_distance    true
+bspc config border_width        1
+bspc config gap					0
+bspc config top_padding         22
+bspc config split_ratio         0.51
+
+bspc config single_monocle      true
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+
+bspc config history_aware_focus true
+bspc config focus_by_distance   true
 bspc config focus_follows_pointer true
-bspc config history_aware_focus  true
+
 bspc config pointer_modifier mod4
 bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
+
 bspc config remove_disabled_monitors true
 bspc config merge_overlapping_monitors true
 
@@ -49,8 +49,8 @@ bspc rule -a Surf state=tiled follow=off
 
 bspc rule -a Code           desktop='^1'    follow=off
 
-spc rule -a Chromium        desktop='^2'    follow=off  state=floating      rectangle=1280x1024+0+0     center=true
-spc rule -a Brave-browser   desktop='^2'    follow=off  state=floating      rectangle=1280x1024+0+0     center=true
+bspc rule -a Chromium       desktop='^2'    follow=off  state=floating      rectangle=1280x1024+0+0     center=true
+bspc rule -a Brave-browser  desktop='^2'    follow=off  state=floating      rectangle=1280x1024+0+0     center=true
 
 bspc rule -a discord        desktop='^4'    follow=off  state=tiled
 bspc rule -a element        desktop='^4'    follow=off  state=tiled
@@ -58,6 +58,7 @@ bspc rule -a element        desktop='^4'    follow=off  state=tiled
 bspc rule -a Thunderbird    desktop='^5'    follow=off  state=tiled
 
 bspc rule -a RimWorldLinux  desktop='^7'    follow=off  state=floating      rectangle=1600x900+0+0      center=true
+bspc rule -a eocapp.exe     desktop='^7'    follow=off  state=floating      rectangle=1600x900+0+0      center=true
 bspc rule -a Godot_Engine   desktop='^7'    follow=off  state=tiled         
 
 bspc rule -a Steam          desktop='^8'    follow=off  state=floating      rectangle=1600x900+0+0      center=true
