@@ -18,7 +18,7 @@ elif [ $control = 'intelligent' ]; then
 elif [ $control = 'battery' ]; then
 	echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0013B001' | sudo tee /proc/acpi/call
 	sudo cpupower frequency-set -g powersave
-	sudo ryzenadj -a 3000 -b 3000 -c 3000
+	sudo ryzenadj -a 2000 -b 2000 -c 2000
 elif [ $control = 'status' ]; then
 	echo '\_SB.PCI0.LPC0.EC0.SPMO' | sudo tee /proc/acpi/call
 	state=$(sudo cat /proc/acpi/call | cut -d '' -f1)
@@ -35,7 +35,7 @@ elif [ $control = 'toggle' ]; then
 	if [ $state = "0x0" ]; then
 		echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0013B001' | sudo tee /proc/acpi/call
 		sudo cpupower frequency-set -g powersave
-		sudo ryzenadj -a 3000 -b 3000 -c 3000
+		sudo ryzenadj -a 2000 -b 2000 -c 2000
 	else
 		echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x000FB001' | sudo tee /proc/acpi/call
 		sudo cpupower frequency-set -g schedutil

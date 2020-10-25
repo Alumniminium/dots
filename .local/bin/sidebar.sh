@@ -20,6 +20,6 @@ while true; do
 		fi
 	fi
 	lastPos=$pos	
-	sleep 10
+	sleep 0.05
 #	echo "$lastPos / $w"
 done

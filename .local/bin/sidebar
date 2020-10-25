@@ -1,0 +1,28 @@
+#!/usr/bin/python
+from Xlib import display
+from time import sleep
+import subprocess
+
+subprocess.call("battery-conservation.sh status", shell=True)
+subprocess.call("rapid-charge.sh status", shell=True)
+subprocess.call("performance-mode.sh status", shell=True)
+subprocess.call("bluetooth-toggle.sh status", shell=True)
+subprocess.call("wireguard-toggle.sh status", shell=True)
+subprocess.call("wifi-toggle.sh status", shell=True)
+
+root = display.Display().screen().root
+width = root.get_geometry().width - 1
+last_x = 0
+
+while True:
+
+	x = root.query_pointer()._data["root_x"]
+	if x != last_x and x == width:
+		subprocess.call("pkill -USR1 deadd-notificat", shell=True)
+
+	if x != last_x:
+		sleep(0.05)
+	else:
+		sleep(0.5)
+
+	last_x = x

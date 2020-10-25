@@ -53,9 +53,10 @@ bspc rule -a Chromium       desktop='^2'    follow=off  state=floating      rect
 bspc rule -a Brave-browser  desktop='^2'    follow=off  state=floating      rectangle=1280x1024+0+0     center=true
 
 bspc rule -a discord        desktop='^4'    follow=off  state=tiled
-bspc rule -a element        desktop='^4'    follow=off  state=tiled
+bspc rule -a Element        desktop='^4'    follow=off  state=tiled
 
 bspc rule -a Thunderbird    desktop='^5'    follow=off  state=tiled
+bspc rule -a Mailspring     desktop='^5'    follow=off  state=tiled
 
 bspc rule -a mpv            desktop='^6'    follow=on   state=floating      rectangle=640x360+1255+100
 
