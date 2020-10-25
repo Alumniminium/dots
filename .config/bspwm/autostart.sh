@@ -8,9 +8,9 @@ xsetroot -cursor_name left_ptr &
 sudo powertop --auto-tune
 
 xrandr --output ${MONITOR} --gamma 0.85
-picom --experimental-backends &
+picom -bc --experimental-backends
 vibrantLinux --hidden &
-wal --saturate 1 -i ~/.bg &
+wal --saturate 1 -i ~/.bg
 
 volnoti &
 pulseaudio --start
