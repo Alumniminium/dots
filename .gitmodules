@@ -1,0 +1,3 @@
+[submodule "Assets/mailspring-nord-theme"]
+	path = Assets/mailspring-nord-theme
+	url = git@github.com:faraadi/mailspring-nord-theme.git
