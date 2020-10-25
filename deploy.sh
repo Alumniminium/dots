@@ -20,7 +20,7 @@ mkdir "/home/$(whoami)/.local/share/mailspring-nord-theme/"
 cp -rs $PWD/Assets/mailspring-nord-theme/* "/home/$(whoami)/.local/share/mailspring-nord-theme/"
 cp -rs $PWD/.local/* "/home/$(whoami)/.local/"
 echo 'copying /etc gimme root!'
-sudo cp -rs $PWD/etc /
+sudo cp -rs $PWD/etc/* /etc/
 
 # install font
 echo 'copying fonts into /usr/share/fonts/TTF gimme root!'
@@ -32,12 +32,12 @@ if [ -z $1 ]; then
     mkdir /tmp/yay
     yay --save --nocleanmenu --nodiffmenu --noconfirm --builddir /tmp/yay --sortby popularity --removemake --batchinstall --combinedupgrade --sudoloop
     yes | yay -Syu
-    yes | yay -S linux-amd linux-amd-headers acpi_call-dkms rmtrash light exa tp_smapi pulseeffects-git \
+    yes | yay -S linux linux-headers acpi_call rmtrash light exa tp_smapi pulseeffects-git \
                  lib32-giflib lib32-mpg123 lib32-v4l-utils lib32-libxslt lib32-gtk3 keynav \
-                 steam surf ly mpv clementine picom-tryone-git xclip sox rmtrash ncdu dfc zsh \
+                 steam surf ly mpv mpc playerctl mpd picom-tryone-git xclip sox rmtrash ncdu dfc zsh \
                  wireguard-dkms wireguard-tools pkgfile mtr dotnet-host dotnet-runtime dotnet-sdk \
                  ruby-cairo visual-studio-code-bin chromium-vaapi network-manager-applet gamemode \
-                 discord thunderbird pcmanfm vibrantlinux-git figlet mysql-workbench redis-desktop-manager \
+                 discord mailspring-libre pcmanfm vibrantlinux-git figlet mysql-workbench redis-desktop-manager \
                  wine-nine deadd-notification-center-bin python-pip wine-tkg-fsync-vkd3d-opt-git
     pip install notify-send.py && sudo pip install notify-send.py
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
