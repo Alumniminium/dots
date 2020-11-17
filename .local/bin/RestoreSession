@@ -2,20 +2,20 @@
 
 multi='0'
 while IFS= read -r line; do
-	if [ "$line" = "HDMI-A-0" ]; then
+	if [ "$line" = "DisplayPort-0" ]; then
 		multi='1'
 	fi
 done <<< $(xrandr | grep -w 'connected' | cut -d' ' -f 1)
 
 
 if [ "$multi" = "1" ]; then
-	export MONITOR="HDMI-A-0"
+	export MONITOR="DisplayPort-0"
 	xrandr --output eDP --off
 	#xrandr --output eDP --scale-from 2560x1440
-	xrandr --output HDMI-A-0 --mode 2560x1440
+	xrandr --output DisplayPort-0 --mode 2560x1440
 else
 	export MONITOR="eDP"
-	xrandr --output HDMI-A-0 --off
+	xrandr --output DisplayPort-0 --off
 	xrandr --output eDP --mode 1920x1080 --scale-from 1920x1080
 fi
 

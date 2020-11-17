@@ -1,5 +1,5 @@
 #!/bin/sh
-pidof bspswallow || bspswallow &
+pgrep bspswallow || bspswallow &
 
 #BSPWM configuration
 bspc config border_width        1

@@ -10,11 +10,10 @@ fi
 
 disk=$(df -lhk / --output=target,pcent,size,used,avail -B G | sed 1d)
 
-echo "\x1B[01;91m$(figlet $(hostname).her.st -c)"
-                                                       
+figlet -c "$(hostname).her.st" | lolcat
 echo "\x1B[01;96m$(figlet "  OS INFO ================================================" -l -f term)"
 echo "  \x1B[01;94mHost:       \x1B[01;95m $(hostname).her.st, $(cat ~/.cache/ip)"
-echo "  \x1B[01;94mOS:         \x1B[01;95m $(cat /etc/os-release | grep NAME | cut -d '=' -f 2), $(uname -r)"
+echo "  \x1B[01;94mOS:         \x1B[01;95m $(cat /etc/os-release | grep NAME | head -n1 |  cut -d '"' -f 2), $(uname -r)"
 echo ""
 echo "\x1B[01;96m$(figlet "  HW INFO ================================================" -l -f term)"
 echo "  \x1B[01;94mCPU:        \x1B[01;95m"`cat /proc/cpuinfo | grep "model name" | head -n1 | cut -d ':' -f 2 | sed -e 's/^[ \t]*//'`

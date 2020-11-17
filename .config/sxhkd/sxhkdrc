@@ -43,6 +43,8 @@ super + shift + {Left,Down,Up,Right}
 alt + Tab
 	bspc node -f next.local
 
+super + Tab
+	task-switcher.sh
 # move window FOCUS (select other windows without mouse)
 
 super +  {Left,Down,Up,Right}

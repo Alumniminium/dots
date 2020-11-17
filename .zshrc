@@ -1,4 +1,8 @@
 #!/bin/bash
+
+[ -n "$DISPLAY" ]  && command -v xdo >/dev/null 2>&1 && xdo id > /tmp/term-wid-"$$"
+trap "( rm -f /tmp/term-wid-"$$" )" EXIT HUP
+
 export TERM=xterm-256color
 export ZSH="${HOME}/.oh-my-zsh"
 ZSH_THEME="lambda-mod"
@@ -10,7 +14,7 @@ alias chmox='chmod'
 alias cls='clear && ls'
 alias ncdu='ncdu --exclude="/mnt" --exclude="/storage"'
 alias upack='dtrx'
-alias ls='exa -l --ignore-glob="*~" --group-directories-first'
+alias ls='exa --icons -l --ignore-glob="*~" --group-directories-first'
 alias mv='amv -g'
 alias dfc='dfc -WwT -p /dev,alumni,root'
 alias yay='yay --nopgpfetch --mflags --skippgpcheck'
