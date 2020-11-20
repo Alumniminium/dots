@@ -39,11 +39,11 @@ if [ -z $1 ]; then
     yes | yay -Syu
     # core linux shit
     yay -S pkgfile linux linux-headers acpi_call light exa tp_smapi pulseeffects-git lib32-giflib lib32-mpg123 lib32-v4l-utils lib32-libxslt lib32-gtk3 xclip rmtrash ncdu dfc pcmanfm
-    yay -S keynav 
+    yay -S keynav advcp
     yay -S wireguard-dkms wireguard-tools mtr  network-manager-applet  
     yay -S discord mailspring-libre  
     # media
-    yay -S surf ly mpv mpc playerctl mpd sox chromium-vaapi vibrantlinux-git figlet picom-tryone-git 
+    yay -S pamixer surf ly mpv mpc playerctl mpd sox chromium-vaapi vibrantlinux-git figlet picom-tryone-git 
     # gaming
     yay -S steam gamemode
     # wine

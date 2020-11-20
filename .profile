@@ -6,7 +6,7 @@ export PATH="$PATH:${HOME}/.dotnet/tools"
 export PATH="$PATH:${HOME}/.cargo/bin"
 
 export BSPWM_SOCKET="/tmp/bspwm-socket"
-export BROWSER=/usr/bin/brave
+export BROWSER=/usr/bin/chromium
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export EDITOR=/usr/bin/micro
 export MONITOR=$(xrandr | grep -w 'connected' | cut -d' ' -f 1)
