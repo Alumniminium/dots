@@ -19,6 +19,10 @@ echo 'reloading sxhkd...'
 # reload sxhkd config
 pkill -USR1 -x sxhkd
 
+echo 'newsboat...'
+mkdir "/home/$(whoami)/.newsboat"
+cp -rs $PWD/.newsboat/* "/home/$(whoami)/.newsboat/"
+
 echo 'copying .local...'
 mkdir "/home/$(whoami)/.local/share/mailspring-nord-theme/"
 cp -rs $PWD/Assets/mailspring-nord-theme/* "/home/$(whoami)/.local/share/mailspring-nord-theme/"

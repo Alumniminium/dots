@@ -1,0 +1,1 @@
+browser "qutebrowser %u > ~/qutebrowser.log"
