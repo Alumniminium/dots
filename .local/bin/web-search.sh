@@ -6,9 +6,11 @@
 # - rofi (https://github.com/DaveDavenport/rofi)
 # Credits: https://github.com/stevenliebregt
 # Edits: https://github.com/Alumniminium
-# Added/Changed:
-#	Added URL Encoding and wrapped query in quotes so special characters and multiline queries work
-# 	Using system-wide $BROWSER
+# 
+# Edits:
+#  Added URL Encoding so special characters and multiline queries work
+#  Using system-wide $BROWSER
+#  Removed search engines I never directly search, added ArchWiki though :D
 
 set -u
 set -e
@@ -21,13 +23,8 @@ CACHE_DIR="$HOME/.cache/web-search"
 SITES=(
     ["youtube"]="https://www.youtube.com/results?search_query="
     ["google"]="https://www.google.com/search?q="
-    ["stackoverflow"]="https://www.stackoverflow.com/search?q="
-    ["stackexchange"]="https://stackexchange.com/search?q="
-    ["superuser"]="https://superuser.com/search?q="
-    ["tex"]="https://tex.stackexchange.com/search?q="
-    ["softwareengineering"]="https://softwareengineering.stackexchange.com/search?q="
+    ["archwiki"]="https://wiki.archlinux.org/index.php?search="
     ["github"]="https://www.github.com/search?q="
-    ["superuser"]="https://www.superuser.com/search?q="
 )
 
 # Show usage for the script.
@@ -166,14 +163,14 @@ main()
 
 # Get argument options.
 while getopts ":s:b:" o; do
-    case "${o}" in 
+    case "${o}" in
         s)
             SITE_TO_USE=${OPTARG}
             ;;
         b)
             BROWSER=${OPTARG}
             ;;
-        \?) 
+        \?)
             usage
             ;;
     esac
