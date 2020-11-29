@@ -20,20 +20,20 @@ echo 'reloading sxhkd...'
 pkill -USR1 -x sxhkd
 
 echo 'newsboat...'
-mkdir "/home/$(whoami)/.newsboat"
+mkdir "/home/$(whoqami)/.newsboat"
 cp -rs $PWD/.newsboat/* "/home/$(whoami)/.newsboat/"
 
 echo 'copying .local...'
-mkdir "/home/$(whoami)/.local/share/mailspring-nord-theme/"
-cp -rs $PWD/Assets/mailspring-nord-theme/* "/home/$(whoami)/.local/share/mailspring-nord-theme/"
+#mkdir "/home/$(whoami)/.local/share/mailspring-nord-theme/"
+#cp -rs $PWD/Assets/mailspring-nord-theme/* "/home/$(whoami)/.local/share/mailspring-nord-theme/"
 cp -rs $PWD/.local/* "/home/$(whoami)/.local/"
 echo 'copying /etc gimme root!'
 sudo rm -rf /etc/X11/xorg.conf.d/* /etc/pacman.conf
-sudo cp -rs $PWD/etc/* /etc/
+sudo cp -r $PWD/etc/* /etc/
 
 # install font
 echo 'copying fonts into /usr/share/fonts/TTF gimme root!'
-sudo cp -s $PWD/Assets/ProFontWindows.ttf /usr/share/fonts/TTF/
+sudo cp $PWD/Assets/ProFontWindows.ttf /usr/share/fonts/TTF/
 
 
 #bypass installing apps if any arg is passed (fast path)
