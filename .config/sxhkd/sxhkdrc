@@ -1,1 +1,159 @@
-/home/alu/dots/.config/sxhkd/sxhkdrc
+# reload this file
+super + shift + Escape
+	pkill -USR1 -x sxhkd
+
+# music
+
+super + m
+	rofi-mpd -s
+super + s
+	web-search.sh
+super + g
+	web-search.sh -s google
+
+# switch between desktops
+
+super + 0
+	bspc desktop -f ^10
+super + 9
+	bspc desktop -f ^9
+super + 8
+	bspc desktop -f ^8
+super + 7
+	bspc desktop -f ^7
+super + 6
+	bspc desktop -f ^6
+super + 5
+	bspc desktop -f ^5
+super + 4
+	bspc desktop -f ^4
+super + 3
+	bspc desktop -f ^3
+super + 2
+	bspc desktop -f ^2
+super + 1
+	bspc desktop -f ^1
+
+# change where new windows spawn
+
+super + {a,s,w,d}
+    bspc node -p {west,south,north,east}
+	
+# moving windows to other desktop
+
+super + shift + {1-9,0}
+    bspc node -d "focused:^{1-9,10}"
+
+# moving windows on current desktop 
+
+super + shift + {Left,Down,Up,Right}
+	euclid_mover {west,south,north,east}
+
+alt + Tab
+	bspc node -f next.local
+
+super + Tab
+	task-switcher.sh
+# move window FOCUS (select other windows without mouse)
+
+super +  {Left,Down,Up,Right}
+    focusmover {west,south,north,east}
+
+# resize windows
+
+super + ctrl + {Left,Down,Up,Right}
+	bspwm_resize.sh {west,south,north,east}
+
+# kill window
+
+super + q
+	bspc  node -c
+
+super + shift + q
+	bspc  node -k
+
+# make window floating
+
+super + t
+	{bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
+
+# keep size and position
+
+super + o
+	bspc node -g private
+
+# make window follow you
+
+super + i
+	bspc node -g sticky
+
+# Lock a window (keeps it from closing)
+
+super + L
+	bspc node -g locked 
+
+# make window fullscreen
+
+super + f 
+	bspc desktop -l next
+
+# run applications
+
+# filemanager
+super + e
+    pcmanfm
+
+# file launcher
+super + space
+    dmenu_recent -fn "ProFontWindows-14" -i -l 12
+
+# terminal
+super + z
+	termite -d ~
+
+# floating terminal
+super + grave
+  bspc rule -a \* -o state=floating && termite -d ~
+
+# screenshot
+Print
+	maim -s ~/$(date +%s).png --hidecursor
+
+# screenshot + upload to cdn.her.st
+Print + shift
+	imgup upload $(date +%s)
+
+# Hardware keys
+
+XF86AudioRaiseVolume
+	volumeOSD up &
+
+XF86AudioLowerVolume
+    volumeOSD down &
+
+XF86AudioMute
+    volumeOSD mute &
+
+XF86AudioPlay
+	playerctl play-pause --player=mpd
+
+XF86AudioStop
+	playerctl stop --player=mpd
+
+XF86AudioPrev
+	playerctl previous --player=mpd
+
+XF86AudioNext
+	playerctl next --player=mpd
+	
+XF86MonBrightnessDown
+ backlight.sh - 10
+
+XF86MonBrightnessUp
+ backlight.sh + 10
+
+shift + XF86MonBrightnessDown
+ backlight.sh - 1
+
+shift + XF86MonBrightnessUp
+ backlight.sh - 1
