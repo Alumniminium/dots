@@ -126,13 +126,13 @@ Print + shift
 # Hardware keys
 
 XF86AudioRaiseVolume
-	volumeOSD up &
+	volume.sh up
 
 XF86AudioLowerVolume
-    volumeOSD down &
+    volume.sh down
 
 XF86AudioMute
-    volumeOSD mute &
+    volume.sh mute 
 
 XF86AudioPlay
 	playerctl play-pause --player=mpd
@@ -156,4 +156,4 @@ shift + XF86MonBrightnessDown
  backlight.sh - 1
 
 shift + XF86MonBrightnessUp
- backlight.sh - 1
+ backlight.sh + 1
