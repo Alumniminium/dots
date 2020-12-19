@@ -7,7 +7,7 @@ if [[ "$USER" == "root" ]]; then USERCOLOR="red"; else USERCOLOR="yellow"; fi
 # return anything in this case. So wrap it in another function and check
 # for an empty string.
 function check_git_prompt_info() {
-    if git rev-parse --git-dir > /dev/null 2>&1; then
+    if type git &>/dev/null && git rev-parse --git-dir > /dev/null 2>&1; then
         if [[ -z $(git_prompt_info 2> /dev/null) ]]; then
             echo "%{$fg[blue]%}detached-head%{$reset_color%}) $(git_prompt_status)
 %{$fg[yellow]%}→ "
@@ -21,7 +21,7 @@ function check_git_prompt_info() {
 }
 
 function get_right_prompt() {
-    if git rev-parse --git-dir > /dev/null 2>&1; then
+    if type git &>/dev/null && git rev-parse --git-dir > /dev/null 2>&1; then
         echo -n "$(git_prompt_short_sha)%{$reset_color%}"
     else
         echo -n "%{$reset_color%}"
@@ -31,9 +31,10 @@ function get_right_prompt() {
 PROMPT=$'\n'$LAMBDA'\
  %{$fg_bold[$USERCOLOR]%}%n\
  %{$fg_no_bold[magenta]%}[%'${LAMBDA_MOD_N_DIR_LEVELS:-3}'~]\
+ $(check_git_prompt_info)\
 %{$reset_color%}'
 
-#RPROMPT='$(get_right_prompt)'
+RPROMPT='$(get_right_prompt)'
 
 # Format for git_prompt_info()
 ZSH_THEME_GIT_PROMPT_PREFIX="at %{$fg[blue]%} "

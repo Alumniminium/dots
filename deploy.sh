@@ -35,6 +35,7 @@ sudo cp -r $PWD/etc/* /etc/
 echo 'copying fonts into /usr/share/fonts/TTF gimme root!'
 sudo cp $PWD/Assets/ProFontWindows.ttf /usr/share/fonts/TTF/
 
+cp -s $PWD/.oh-my-zsh/themes/* "/home/$(whoami)/.oh-my-zsh/themes/"
 
 #bypass installing apps if any arg is passed (fast path)
 if [ -z $1 ]; then
