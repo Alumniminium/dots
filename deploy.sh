@@ -1,45 +1,37 @@
 #!/bin/bash
-rm "/home/$(whoami)/.profile"
-cp -s $PWD/.profile "/home/$(whoami)/"
-rm "/home/$(whoami)/.zprofile"
-cp -s $PWD/.zprofile "/home/$(whoami)/"
-rm "/home/$(whoami)/.zshrc"
-cp -s $PWD/.zshrc "/home/$(whoami)/"
+cp -sf $PWD/.profile "/home/$(whoami)/"
+cp -sf $PWD/.zprofile "/home/$(whoami)/"
+cp -sf $PWD/.zshrc "/home/$(whoami)/"
 
 # install background
-rm "/home/$(whoami)/.bg"
-cp -s $PWD/Assets/.bg "/home/$(whoami)/"
-rm "/home/$(whoami)/.config/ding.wav"
-cp -s $PWD/Assets/ding.wav "/home/$(whoami)/.config/"
+cp -sf $PWD/Assets/.bg "/home/$(whoami)/"
+cp -sf $PWD/Assets/ding.wav "/home/$(whoami)/.config/"
 
 # install ocnfigs
 echo 'copying .config...'
-cp -rs $PWD/.config/* "/home/$(whoami)/.config/"
+cp -rsf $PWD/.config/* "/home/$(whoami)/.config/"
 echo 'reloading sxhkd...'
 # reload sxhkd config
 pkill -USR1 -x sxhkd
 
 echo 'newsboat...'
-mkdir "/home/$(whoqami)/.newsboat"
-cp -rs $PWD/.newsboat/* "/home/$(whoami)/.newsboat/"
+mkdir "/home/$(whoami)/.newsboat" > /dev/null 2>&1
+cp -rsf $PWD/.newsboat/* "/home/$(whoami)/.newsboat/"
 
 echo 'copying .local...'
-#mkdir "/home/$(whoami)/.local/share/mailspring-nord-theme/"
-#cp -rs $PWD/Assets/mailspring-nord-theme/* "/home/$(whoami)/.local/share/mailspring-nord-theme/"
-cp -rs $PWD/.local/* "/home/$(whoami)/.local/"
+cp -rsf $PWD/.local/* "/home/$(whoami)/.local/"
 echo 'copying /etc gimme root!'
-sudo rm -rf /etc/X11/xorg.conf.d/* /etc/pacman.conf
-sudo cp -r $PWD/etc/* /etc/
+sudo cp -rf $PWD/etc/* /etc/
 
 # install font
 echo 'copying fonts into /usr/share/fonts/TTF gimme root!'
-sudo cp $PWD/Assets/ProFontWindows.ttf /usr/share/fonts/TTF/
+sudo cp -f $PWD/Assets/ProFontWindows.ttf /usr/share/fonts/TTF/
 
-cp -s $PWD/.oh-my-zsh/themes/* "/home/$(whoami)/.oh-my-zsh/themes/"
+cp -sf $PWD/.oh-my-zsh/themes/* "/home/$(whoami)/.oh-my-zsh/themes/"
 
 #bypass installing apps if any arg is passed (fast path)
 if [ -z $1 ]; then
-    mkdir /tmp/yay
+    mkdir /tmp/yay > /dev/null 2>&1
     yay --save --nocleanmenu --nodiffmenu --noconfirm --builddir /tmp/yay --sortby popularity --removemake --batchinstall --combinedupgrade --sudoloop 
     yes | yay -Syu
     # core linux shit
@@ -77,6 +69,5 @@ if [ -z $1 ]; then
     # shell
     yay -S zsh 
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    rm -r "/home/$(whoami)/.oh-my-zsh/themes"
-    cp -s $PWD/.oh-my-zsh/themes/* "/home/$(whoami)/.oh-my-zsh/themes/"
+    cp -sf $PWD/.oh-my-zsh/themes/* "/home/$(whoami)/.oh-my-zsh/themes/"
 fi
