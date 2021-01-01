@@ -32,15 +32,15 @@
         "blocklist": "",
         "plugins_order": [
             "autogain",
-            "equalizer",
             "bass_enhancer",
+            "equalizer",
+            "convolver",
             "crystalizer",
             "limiter",
             "gate",
             "multiband_gate",
             "compressor",
             "multiband_compressor",
-            "convolver",
             "exciter",
             "stereo_tools",
             "reverb",
@@ -50,17 +50,18 @@
             "loudness",
             "maximizer",
             "filter",
-            "pitch"
+            "pitch",
+            "rnnoise"
         ],
         "bass_enhancer": {
             "state": "false",
             "input-gain": "0",
-            "output-gain": "0",
-            "amount": "4",
+            "output-gain": "-1",
+            "amount": "2.0000000000000009",
             "harmonics": "10",
             "scope": "100",
             "floor": "20",
-            "blend": "0",
+            "blend": "-10",
             "floor-active": "false",
             "listen": "false"
         },
@@ -116,7 +117,7 @@
             "mode": "IIR",
             "num-bands": "10",
             "input-gain": "0",
-            "output-gain": "0",
+            "output-gain": "-1",
             "split-channels": "false",
             "left": {
                 "band0": {
@@ -358,15 +359,15 @@
             "makeup": "0"
         },
         "limiter": {
-            "state": "true",
+            "state": "false",
             "input-gain": "2",
             "limit": "-1",
             "lookahead": "5",
-            "release": "50",
+            "release": "500",
             "auto-level": "false",
             "asc": "false",
             "asc-level": "0.5",
-            "oversampling": "1",
+            "oversampling": "4",
             "output-gain": "0"
         },
         "maximizer": {
@@ -457,6 +458,7 @@
             "state": "false",
             "fft": "512",
             "std": "ISO226-2003",
+            "input": "0",
             "volume": "0"
         },
         "multiband_gate": {
@@ -538,17 +540,17 @@
             "stereo-phase": "0"
         },
         "convolver": {
-            "state": "false",
+            "state": "true",
             "input-gain": "0",
-            "output-gain": "0",
-            "kernel-path": "",
-            "ir-width": "100"
+            "output-gain": "-1",
+            "kernel-path": "\/home\/alu\/.config\/PulseEffects\/irs\/Dolby Pro Logic II.irs",
+            "ir-width": "75"
         },
         "crystalizer": {
             "state": "true",
             "aggressive": "false",
             "input-gain": "0",
-            "output-gain": "0",
+            "output-gain": "-1",
             "band0": {
                 "intensity": "12",
                 "mute": "false",
@@ -616,7 +618,7 @@
             }
         },
         "autogain": {
-            "state": "true",
+            "state": "false",
             "detect-silence": "true",
             "use-geometric-mean": "true",
             "input-gain": "0",
@@ -632,6 +634,12 @@
             "output-gain": "0",
             "time-l": "0",
             "time-r": "0"
+        },
+        "rnnoise": {
+            "state": "false",
+            "input-gain": "0",
+            "output-gain": "0",
+            "model-path": "Standard RNNoise Model"
         }
     }
 }
