@@ -1,11 +1,11 @@
 #!/bin/bash
 control=$1
 
-usage='usage: sudo ./performance-mode.sh [status|extreme|intelligent|battery]'
+usage="usage: sudo ./performance-mode.sh [status|extreme|intelligent|battery]"
 
 if [ -z $control ]; then
 	control=' '
-	echo $usage
+	echo "$usage"
 	exit
 fi
 
@@ -16,6 +16,9 @@ if [ $control = 'extreme' ]; then
 elif [ $control = 'intelligent' ]; then
 	echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x000FB001' | sudo tee /proc/acpi/call
 elif [ $control = 'battery' ]; then
+	echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0013B001' | sudo tee /proc/acpi/call
+	sudo cpupower frequency-set -g powersave
+elif [ $control = 'ultralow' ]; then
 	echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0013B001' | sudo tee /proc/acpi/call
 	sudo cpupower frequency-set -g powersave
 	sudo ryzenadj -a 2000 -b 2000 -c 2000
@@ -42,7 +45,7 @@ elif [ $control = 'toggle' ]; then
 		sudo ryzenadj -a 15000 -b 15000 -c 15000
 	fi
 else
-	echo $usage
+	echo "$usage"
 fi
 
 

@@ -10,7 +10,10 @@ super + s
 	web-search.sh
 super + g
 	web-search.sh -s google
-
+super + l
+	feelinglucky.sh
+super + y
+	yt2mpv.sh
 # switch between desktops
 
 super + 0

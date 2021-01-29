@@ -17,12 +17,13 @@ last_x = 0
 while True:
 
 	x = root.query_pointer()._data["root_x"]
-	if x != last_x and x == width:
+	distance = width - x
+	if x != last_x and distance < 20:
 		subprocess.call("pkill -USR1 deadd-notificat", shell=True)
 
 	if x != last_x:
 		sleep(0.05)
 	else:
 		sleep(0.5)
-
+	print(x)
 	last_x = x

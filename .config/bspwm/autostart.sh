@@ -13,19 +13,16 @@ picom -bc --experimental-backends
 vibrantLinux --hidden &
 wal --saturate 1 -i ~/.bg
 
-volnoti &
-pulseaudio --start
-mpd
-sshmount local && mpc add / && mpc shuffle
-mpDris2 & # makes playerctl work for mpd
-
+#volnoti &
+mpd && sshmount local && mpc add / && mpc shuffle && mpDris2 & # makes playerctl work for mpd
+conky &
 #keynav &
 nm-applet &
 code &
 #chromium &
-discord-canary &
-#discord &
+discord &
 element-desktop &
 #thunderbird &
-mailspring &
+#mailspring &
+geary &
 RestoreSession &
