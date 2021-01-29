@@ -1,18 +1,23 @@
 #!/bin/bash
 
+VOL=$(pamixer --get-volume)
+
 case "$1" in
     "up")
-         $(pactl set-sink-volume 0 +1%)
+		 VOL=$(($VOL+1))
+         $(amixer sset "Master" "$VOL%")
           ;;
   "down")
-         $(pactl set-sink-volume 0 -1%)
+		 VOL=$(($VOL-1))
+         $(amixer sset "Master" "$VOL%")
           ;;
   "mute")
          $(pamixer -t)
           ;;
 esac
+
 STATE=$(pamixer --get-mute)
-VOL=$(pamixer --get-volume)
+
 # Show volume with volnoti
 if [[ $STATE = "true" ]]; then
   notify-send.py a --hint boolean:deadd-notification-center:true \
