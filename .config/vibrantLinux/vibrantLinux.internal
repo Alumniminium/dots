@@ -4,6 +4,10 @@
         {
             "name": "eDP",
             "vibrance": 130
+        },
+        {
+            "name": "DisplayPort-0",
+            "vibrance": 115
         }
     ],
     "programs": [

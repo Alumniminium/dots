@@ -1,7 +1,7 @@
 # Beware! This file is rewritten by htop when settings are changed in the interface.
 # The parser is also very primitive, and not human-friendly.
 fields=48 39 47 46 49 1
-sort_key=49
+sort_key=47
 sort_direction=1
 tree_sort_key=46
 tree_sort_direction=1
@@ -32,8 +32,8 @@ account_guest_in_cpu_meter=1
 color_scheme=6
 enable_mouse=1
 delay=15
-left_meters=LeftCPUs Memory Battery PressureStallCPUSome
-left_meter_modes=1 1 2 2
-right_meters=RightCPUs Tasks LoadAverage Uptime
+left_meters=LeftCPUs Memory LoadAverage Battery
+left_meter_modes=1 1 1 1
+right_meters=RightCPUs Tasks PressureStallCPUSome Uptime
 right_meter_modes=1 2 2 2
 hide_function_bar=0

@@ -27,5 +27,5 @@ screen -dmS polybar sh -c 'polybar example'
 feh --bg-fill .bg
 
 pkill sidebar.sh
-pkill deadd-notificat
+pkill deadd-notificat -KILL
 screen -dmS sidebar sh -c 'deadd-notification-center'

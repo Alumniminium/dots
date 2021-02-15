@@ -5,7 +5,7 @@ filetime=$(stat -c "%Y" ~/.cache/ip)
 expire=$(( filetime + 60 ))
 
 if [ $time -gt $expire ]; then
-    curl --no-progress-meter wtfismyip.com/text > ~/.cache/ip
+    curl --no-progress-meter wtfismyip.com/text > ~/.cache/ip &
 fi
 
 disk=$(df -lhk / --output=target,pcent,size,used,avail -B G | sed 1d)

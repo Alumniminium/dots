@@ -5,20 +5,20 @@ VOL=$(pamixer --get-volume)
 case "$1" in
     "up")
 		 VOL=$(($VOL+1))
-         $(amixer sset "Master" "$VOL%")
+         amixer sset "Master" "$VOL%"
           ;;
   "down")
 		 VOL=$(($VOL-1))
-         $(amixer sset "Master" "$VOL%")
+         amixer sset "Master" "$VOL%"
           ;;
   "mute")
-         $(pamixer -t)
+         pamixer -t
           ;;
 esac
 
 STATE=$(pamixer --get-mute)
 
-# Show volume with volnoti
+# Show notifications
 if [[ $STATE = "true" ]]; then
   notify-send.py a --hint boolean:deadd-notification-center:true \
                int:id:3 boolean:state:true type:string:buttons

@@ -9,7 +9,7 @@ DISPLAY=:0 /usr/bin/notify-send 'Backup' "Starting backup ($(date +%A))" --icon=
 # Update symlink to Latest to current day of the week
 ssh $user@$host "ln -sfT /mnt/SDA/Backups/Ideapad/$(date +%A) $dest"
 # Sync everyhting not in the ignorelist to the homeserver
-rsync -aAXOPh --exclude-from=${HOME}/.local/bin/backupignorelist -e "ssh -o Compression=no" / $user@$host:$dest
+rsync -aAXOPh --inplace --delete --backup --suffix=$(date +'.%F_%H-%M') --exclude-from=${HOME}/.local/bin/backupignorelist -e "ssh -o Compression=no" / $user@$host:$dest
 # send notification that backup has been completed
 DISPLAY=:0 /usr/bin/notify-send 'Backup' "Finished backup: ($(date +%A))" --icon=emblem-synchronized -u critical
 

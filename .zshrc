@@ -1,7 +1,5 @@
-#!/bin/bash
 
-[ -n "$DISPLAY" ]  && command -v xdo >/dev/null 2>&1 && xdo id > /tmp/term-wid-"$$"
-trap "( rm -f /tmp/term-wid-"$$" )" EXIT HUP
+#!/bin/bash
 
 export TERM=xterm-256color
 export ZSH="${HOME}/.oh-my-zsh"
@@ -21,7 +19,6 @@ alias dfc='dfc -WwT -p /dev,alumni,root'
 alias yay='yay --nopgpfetch --mflags --skippgpcheck'
 alias trash='rmtrash'
 alias rm='echo "use trash"; rm -i'
-alias micro='echo "nope, u gonna use vim"; sleep 3; vim'
 alias curl='curl --no-progress-meter'
 
 alias ytdla="youtube-dl -f 'bestaudio[ext=m4a]'"
