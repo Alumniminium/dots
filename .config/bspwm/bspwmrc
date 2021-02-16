@@ -33,34 +33,17 @@ bspc config urgent_border_color 	"#dd2727"
 #Single monitor
 bspc monitor -d          
 
-# Special applications
-
-bspc rule -a Conky                                                                                                      sticky=on   manage=off  lower=on
-
-#Fullscreen applications
-bspc rule -a Gimp state=fullscreen
-
 #Floating applications
 bspc rule -a feh                                        state=floating
 bspc rule -a Pavucontrol                                state=floating                                                  sticky=on
 bspc rule -a Peek                                       state=floating
-bspc rule -a mpv                                        state=floating      rectangle=640x360+1255+100                  sticky=on
 bspc rule -a Gcr-prompter                   follow=off  state=floating                                  center=true     sticky=on
 
 #Tiled applications
 bspc rule -a Gnome-disks                                state=tiled
 bspc rule -a Xfce4-settings-manager                     state=tiled
-bspc rule -a Surf                                       state=tiled
 
 # Workspace bound applications
-
-bspc rule -a Code           desktop='^1'    follow=off
-
-bspc rule -a Chromium       desktop='^2'    follow=off  state=floating      rectangle=1280x1024+0+0     center=true
-bspc rule -a Brave-browser  desktop='^2'    follow=off  state=floating      rectangle=1280x1024+0+0     center=true
-
-bspc rule -a discord        desktop='^4'    follow=off  state=tiled
-bspc rule -a Element        desktop='^4'    follow=off  state=tiled
 
 bspc rule -a Thunderbird    desktop='^5'    follow=off  state=tiled
 bspc rule -a Thunderbird    desktop='^5'    follow=off  state=tiled
