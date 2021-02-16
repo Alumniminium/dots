@@ -37,17 +37,18 @@ public static bool LoadFile(string filename)
     {
         writer.WriteLine("Found " + ruleFile);
 
-        var lines = File.ReadAllLines(ruleFile);
+        var lines = File.ReadAllLines(ruleFile)
+                        .Where(line => !ignoredPrefixes.Any(prefix=> line.StartsWith(prefix)))
+                        .Where(line => line.Split('=').Length==2)
+                        .Select(line => line.Split('='))
+                        .Select(kvp => (kvp[0],kvp[1]));
+        
+        foreach (var (key,val) in lines)
+            Flags[key] = val;
 
-        foreach (var ignoredChar in ignoredPrefixes)
-            lines = lines.Where(l => !l.StartsWith(ignoredChar)).ToArray();
+        foreach (var (key,val) in lines)
+            writer.WriteLine($"{ruleFile}: {key}={val}");
 
-        foreach (var line in lines)
-        {
-            var kvp = line.Split('=');
-            if (kvp.Length == 2)
-                Flags[kvp[0]] = kvp[1];
-        }
         return true;
     }
     return false;
