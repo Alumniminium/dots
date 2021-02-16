@@ -6,79 +6,73 @@ using System.IO;
 
 public static StreamWriter writer = new StreamWriter("/tmp/extenal_rules.log", true) { AutoFlush = true };
 
-public static void DialogRules()
+public static bool ApplyRulesForFirst(string WM_CLASS, string WM_NAME, string WM_TYPE)
 {
-    Floating = true;
-    Centered = false;
-    Centered = true;
+    WM_CLASS = string.Join("_", WM_CLASS.Split(Path.GetInvalidFileNameChars()));
+    WM_NAME = string.Join("_", WM_NAME.Split(Path.GetInvalidFileNameChars()));
+
+    var paths = new[]
+    {
+        Path.Combine(WM_CLASS, $"{WM_NAME}.ini"),
+        Path.Combine(WM_CLASS, $"{WM_CLASS}.ini"),
+        $"{WM_NAME}.ini",
+        $"{WM_CLASS}.ini",
+        $"{WM_TYPE}.ini"
+    };
+
+    for (int i = 0; i < paths.Length; i++)
+        if (LoadFile(paths[i]))
+            return true;
+    return false;
 }
 
-public static void SteamRules(string WM_NAME)
+public static bool LoadFile(string filename)
 {
-    switch (WM_NAME)
+    var ignoredPrefixes = new[] { '[', '#', '/' };
+    var ruleFile = Path.Combine(Environment.CurrentDirectory, ".config/bspwm/externalRules/rules/", filename);
+
+    writer.WriteLine("Trying " + ruleFile);
+
+    if (File.Exists(ruleFile))
     {
-        case "Friends List":
-            SelectBiggestNode();
-            SplitRatio = 0.85f;
-            break;
-        case "Settings":
-        case "Product Activation":
-        case "Add a Game":
-        case "About Steam":
-            Floating = true;
-            Centered = true;
-            SizeInverted(500, 300, 0, 250);
-            break;
-        default:
-            Tiled = true;
-            break;
-    }
-}
+        writer.WriteLine("Found " + ruleFile);
 
+        var lines = File.ReadAllLines(ruleFile);
 
-public static void ApplyRulesForFirst(params string[] arr)
-{
-    for (int i = 0; i < arr.Length; i++)
-    {
-        var name = arr[i];
-        if(string.IsNullOrEmpty(name))
-            continue;
+        foreach (var ignoredChar in ignoredPrefixes)
+            lines = lines.Where(l => !l.StartsWith(ignoredChar)).ToArray();
 
-        var ruleFile = ".config/bspwm/externalRules/rules/" + name + ".ini";
-        writer.WriteLine("Trying "+ruleFile);
-
-        if (File.Exists(ruleFile))
+        foreach (var line in lines)
         {
-            writer.WriteLine("Found "+ruleFile);
-        
-            var lines = File.ReadAllLines(ruleFile);
-            foreach (var line in lines)
-            {
-                if (line.StartsWith('[') || line.StartsWith('#'))
-                    continue;
-        
-                var kvp = line.Split('=');
-                if (kvp.Length == 2)
-                    Flags[kvp[0]] = kvp[1];
-            }
+            var kvp = line.Split('=');
+            if (kvp.Length == 2)
+                Flags[kvp[0]] = kvp[1];
         }
+        return true;
     }
+    return false;
 }
 
-
-public static void PrintDebugInfo(string[] Args, string WM_CLASS, string name, string type)
+public static void PrintDebugInfo(IList<string> Args, string WM_CLASS, string WM_NAME, string WM_TYPE)
 {
     writer.WriteLine();
-    writer.WriteLine("######");
+    writer.WriteLine("###### Debug Info Start");
+    writer.Write("Args:");
+    for (int i = 0; i < Args.Count - 1; i++)
+        writer.Write($" {Args[i]}");
+
     writer.WriteLine();
-    for (int i = 0; i < Args.Length; i++)
-        writer.WriteLine($"Arg {i}: {Args[i]}");
+    writer.WriteLine("WM_TYPE: " + WM_TYPE);
+    writer.WriteLine("WM_CLASS: " + WM_CLASS);
+    writer.WriteLine("WM_NAME: " + WM_NAME);
     writer.WriteLine();
 
+    writer.Write("Flags:");
     foreach (var flag in Flags)
-        writer.WriteLine("Flag: " + flag.Key + "=" + flag.Value);
+        if (!string.IsNullOrEmpty(flag.Value))
+            writer.Write($" {flag.Key}={flag.Value}");
     writer.WriteLine();
-    writer.WriteLine("Type: " + type);
-    writer.WriteLine("WM_CLASS: " + WM_CLASS);
-    writer.WriteLine("Name: " + name);
+
+    writer.WriteLine("###### Debug Info End");
+    writer.WriteLine();
 }

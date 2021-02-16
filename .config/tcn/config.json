@@ -1,0 +1,22 @@
+{
+  "Redis": {
+    "Hosts": "",
+    "QueueKey": "Queue",
+    "NodeQueueKey": "laptop_Processing",
+    "UpdateChannel": "Update",
+    "TimeUpdateChannel": "TimeUpdate",
+    "WaveformChannel": "Waveform"
+  },
+  "Transcoder": {
+    "MaxAudioDuration": 900000,
+    "QueueSize": 24,
+    "Threads": 12
+  },
+  "Uploader": {
+    "QueueSize": 16,
+    "Threads": 8
+  },
+  "FlacEncodeMulti": 64,
+  "FlacDecodeMulti": 235,
+  "WaveformMulti": 235
+}

@@ -70,9 +70,6 @@ bspc rule -a RimWorldLinux  desktop='^7'    follow=off  state=floating      rect
 bspc rule -a eocapp.exe     desktop='^7'    follow=off  state=floating      rectangle=1600x900+0+0      center=true
 bspc rule -a Godot_Engine   desktop='^7'    follow=off  state=tiled         
 
-bspc rule -a Steam          desktop='^8'    follow=off  state=floating      rectangle=1600x900+0+0      center=true
-
-bspc rule -a Pulseeffects   desktop='^10'   follow=off  state=tiled
 bspc rule -a SVPManager     desktop='^10'   follow=off  state=tiled
 
 

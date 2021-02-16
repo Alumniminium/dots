@@ -1,0 +1,5 @@
+FileManager=pcmanfm
+TerminalEmulator=custom-TerminalEmulator
+WebBrowser=chromium
+MailReader=geary
+
