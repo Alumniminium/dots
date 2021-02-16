@@ -33,29 +33,6 @@ bspc config urgent_border_color 	"#dd2727"
 #Single monitor
 bspc monitor -d          
 
-#Floating applications
-bspc rule -a feh                                        state=floating
-bspc rule -a Pavucontrol                                state=floating                                                  sticky=on
-bspc rule -a Peek                                       state=floating
-bspc rule -a Gcr-prompter                   follow=off  state=floating                                  center=true     sticky=on
-
-#Tiled applications
-bspc rule -a Gnome-disks                                state=tiled
-bspc rule -a Xfce4-settings-manager                     state=tiled
-
-# Workspace bound applications
-
-bspc rule -a Thunderbird    desktop='^5'    follow=off  state=tiled
-bspc rule -a Thunderbird    desktop='^5'    follow=off  state=tiled
-bspc rule -a Geary          desktop='^5'    follow=off  state=tiled
-
-bspc rule -a RimWorldLinux  desktop='^7'    follow=off  state=floating      rectangle=1600x900+0+0      center=true
-bspc rule -a eocapp.exe     desktop='^7'    follow=off  state=floating      rectangle=1600x900+0+0      center=true
-bspc rule -a Godot_Engine   desktop='^7'    follow=off  state=tiled         
-
-bspc rule -a SVPManager     desktop='^10'   follow=off  state=tiled
-
-
 #polybar hidden when fullscreen for vlc, youtube, mpv ...
 #find out the name of your monitor with xrandr
 xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_eDP)
