@@ -37,17 +37,11 @@ public static bool LoadFile(string filename)
     {
         writer.WriteLine("Found " + ruleFile);
 
-        var lines = File.ReadAllLines(ruleFile)
-                        .Where(line => !ignoredPrefixes.Any(prefix=> line.StartsWith(prefix)))
-                        .Where(line => line.Split('=').Length==2)
-                        .Select(line => line.Split('='))
-                        .Select(kvp => (kvp[0],kvp[1]));
-        
-        foreach (var (key,val) in lines)
-            Flags[key] = val;
-
-        foreach (var (key,val) in lines)
-            writer.WriteLine($"{ruleFile}: {key}={val}");
+        File.ReadAllLines(ruleFile)
+            .Where(l => !ignoredPrefixes.Any(i=> l.StartsWith(i)))
+            .Select(l => l.Split('='))
+            .ToList()
+            .ForEach(a => Flags[a[0]]=a[1]);
 
         return true;
     }
@@ -58,20 +52,20 @@ public static void PrintDebugInfo(IList<string> Args, string WM_CLASS, string WM
 {
     writer.WriteLine();
     writer.WriteLine("###### Debug Info Start");
+    
     writer.Write("Args:");
     for (int i = 0; i < Args.Count - 1; i++)
         writer.Write($" {Args[i]}");
-
     writer.WriteLine();
+
     writer.WriteLine("WM_TYPE: " + WM_TYPE);
     writer.WriteLine("WM_CLASS: " + WM_CLASS);
     writer.WriteLine("WM_NAME: " + WM_NAME);
     writer.WriteLine();
 
     writer.Write("Flags:");
-    foreach (var flag in Flags)
-        if (!string.IsNullOrEmpty(flag.Value))
-            writer.Write($" {flag.Key}={flag.Value}");
+    foreach (var flag in Flags.Where(flag=>!string.IsNullOrEmpty(flag.Value)))
+        writer.Write($" {flag.Key}={flag.Value}");
     writer.WriteLine();
 
     writer.WriteLine("###### Debug Info End");
