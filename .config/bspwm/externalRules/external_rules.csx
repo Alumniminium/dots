@@ -1,18 +1,68 @@
 #!/usr/bin/env dotnet-script
 
-#load "rules.csx"
-#load "xprop.csx"
-#load "bspc.csx"
+#load "/home/alu/coding/linux-dotnet-scripts/io/ini.csx"
+#load "/home/alu/coding/linux-dotnet-scripts/wrappers/xprop.csx"
+#load "/home/alu/coding/linux-dotnet-scripts/wrappers/bspc.csx"
+
+StreamWriter writer = new StreamWriter("/tmp/extenal_rules.log", true) { AutoFlush = true };
 
 writer.WriteLine("Starting up...");
+
 Flags = ParseFlags(Args[3]);
-var (WM_CLASS, WM_NAME, type) = await DoMagic(Args[0]);
+var (WM_CLASS, WM_NAME, WM_TYPE) = await xprop.getWindowInfoById(Args[0]);
 
-// if (type == "_NET_WM_WINDOW_TYPE_DIALOG")
-    // DialogRules();
-// else
-ApplyRulesForFirst(WM_CLASS, WM_NAME,type);
+var paths = new[]
+{
+    Path.Combine(WM_CLASS, $"{WM_NAME}.ini"),
+    Path.Combine(WM_CLASS, $"{WM_CLASS}.ini"),
+    $"{WM_NAME}.ini",
+    $"{WM_CLASS}.ini",
+    $"{WM_TYPE}.ini"
+};
 
+for (int i = 0; i < paths.Length; i++)
+{
+    var ruleFile = Path.Combine("/home",Environment.UserName, ".config/bspwm/externalRules/rules/", paths[i]);
+    writer.WriteLine("Trying " + ruleFile);
+
+    if (!File.Exists(ruleFile))
+        continue;
+
+    writer.WriteLine("Found " + ruleFile);
+    var file = new ini(ruleFile,preload: true);
+
+    foreach (var section in file.contents)
+        if(section.Key == WM_TYPE || string.IsNullOrEmpty(WM_TYPE))
+            foreach(var data in section.Value)
+                Flags[data.Key] = data.Value;
+    break;
+}
+
+PrintDebugInfo(Args,WM_CLASS,WM_NAME,WM_TYPE);
 ApplyRules();
-PrintDebugInfo(Args,WM_CLASS,WM_NAME,type);
 writer.WriteLine("Shutting down...");
+
+
+void PrintDebugInfo(IList<string> Args, string WM_CLASS, string WM_NAME, string WM_TYPE)
+{
+    writer.WriteLine();
+    writer.WriteLine("###### Debug Info Start");
+    
+    writer.Write("Args:");
+    for (int i = 0; i < Args.Count - 1; i++)
+        writer.Write($" {Args[i]}");
+    writer.WriteLine();
+
+    writer.WriteLine("WM_TYPE: " + WM_TYPE);
+    writer.WriteLine("WM_CLASS: " + WM_CLASS);
+    writer.WriteLine("WM_NAME: " + WM_NAME);
+    writer.WriteLine();
+
+    writer.Write("Flags:");
+    foreach (var flag in Flags.Where(flag=>!string.IsNullOrEmpty(flag.Value)))
+        writer.Write($" {flag.Key}={flag.Value}");
+    writer.WriteLine();
+
+    writer.WriteLine("###### Debug Info End");
+    writer.WriteLine();
+}
