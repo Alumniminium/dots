@@ -47,6 +47,7 @@ void PrintDebugInfo(IList<string> Args, string WM_CLASS, string WM_NAME, string 
 {
     writer.WriteLine();
     writer.WriteLine("###### Debug Info Start");
+    writer.WriteLine();
     
     writer.Write("Args:");
     for (int i = 0; i < Args.Count - 1; i++)
@@ -58,9 +59,9 @@ void PrintDebugInfo(IList<string> Args, string WM_CLASS, string WM_NAME, string 
     writer.WriteLine("WM_NAME: " + WM_NAME);
     writer.WriteLine();
 
-    writer.Write("Flags:");
+    writer.WriteLine("Flags:");
     foreach (var flag in Flags.Where(flag=>!string.IsNullOrEmpty(flag.Value)))
-        writer.Write($" {flag.Key}={flag.Value}");
+        writer.WriteLine($"{flag.Key}={flag.Value}");
     writer.WriteLine();
 
     writer.WriteLine("###### Debug Info End");
