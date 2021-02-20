@@ -3,7 +3,9 @@
 # Originally based on code by Dieter Plaetinck.
 # Pretty much re-written by Mina Nagy (mnzaki)
 # And then github.com/Alumniminium removed most of the code
-dmenu_cmd="dmenu $DMENU_OPTIONS"
+ROFI_THEME="-theme ~/.config/rofi/launchers/colorful/style_3.rasi"
+ROFI_OPTIONS="$ROFI_THEME -no-lazy-grab -show-icons true -show drun -modi drun"
+dmenu_cmd="rofi $ROFI_OPTIONS"
 terminal="termite"
 max_recent=199 # Number of recent commands to track
 
@@ -12,9 +14,7 @@ recent_cache="$cache_dir/recent"
 rest_cache="$cache_dir/all"
 known_types=" background terminal terminal_hold "
 
-config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-recent"
 mkdir -p "$cache_dir"
-mkdir -p "$config_dir"
 touch "$recent_cache"
 
 IFS=:

@@ -16,4 +16,5 @@ export XDG_CONFIG_DIRS=/usr/etc/xdg:/etc/xdg
 export MGFXC_WINE_PATH=/home/alu/.winemonogame
 
 # fix java applications not rendering
-export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_AWT_WM_NONREPARENTING=1export MANGOHUD=1
+export MANGOHUD=1

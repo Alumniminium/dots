@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "externalRules"
+		},
+		{
+			"path": "../../../linux-dotnet-scripts"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}

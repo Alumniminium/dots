@@ -8,7 +8,7 @@ StreamWriter writer = new StreamWriter("/tmp/extenal_rules.log", true) { AutoFlu
 
 writer.WriteLine("Starting up...");
 
-Flags = ParseFlags(Args[3]);
+bspc.Flags = bspc.ParseFlags(Args[3]);
 var (WM_CLASS, WM_NAME, WM_TYPE) = await xprop.getWindowInfoById(Args[0]);
 
 var paths = new[]
@@ -34,12 +34,12 @@ for (int i = 0; i < paths.Length; i++)
     foreach (var section in file.contents)
         if(section.Key == WM_TYPE || string.IsNullOrEmpty(WM_TYPE))
             foreach(var data in section.Value)
-                Flags[data.Key] = data.Value;
+                bspc.Flags[data.Key] = data.Value;
     break;
 }
 
 PrintDebugInfo(Args,WM_CLASS,WM_NAME,WM_TYPE);
-ApplyRules();
+bspc.ApplyRulesToStdOut();
 writer.WriteLine("Shutting down...");
 
 
@@ -60,7 +60,7 @@ void PrintDebugInfo(IList<string> Args, string WM_CLASS, string WM_NAME, string 
     writer.WriteLine();
 
     writer.WriteLine("Flags:");
-    foreach (var flag in Flags.Where(flag=>!string.IsNullOrEmpty(flag.Value)))
+    foreach (var flag in bspc.Flags/*.Where(flag=>!string.IsNullOrEmpty(flag.Value))*/)
         writer.WriteLine($"{flag.Key}={flag.Value}");
     writer.WriteLine();
 
