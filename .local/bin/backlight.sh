@@ -19,7 +19,7 @@ if [ $command = "+" ]; then
 		val=$max
 	fi
 	echo $val | sudo tee $device
-	notify-send.py -t $timeout "Brightness" "<b>$val</b>" --hint string:image-path:weather-clear boolean:transient:true --replaces-process "brightness-popup"
+	#notify-send.py -t $timeout "Brightness" "<b>$val</b>" --hint string:image-path:weather-clear boolean:transient:true --replaces-process "brightness-popup"
 fi
 
 if [ $command = '-' ]; then
@@ -32,16 +32,16 @@ if [ $command = '-' ]; then
 		val=0
 	fi
 	echo $val | sudo tee $device
-	notify-send.py -t $timeout "Brightness" "<b>$val</b>" --hint string:image-path:weather-clear boolean:transient:true --replaces-process "brightness-popup"
+	#notify-send.py -t $timeout "Brightness" "<b>$val</b>" --hint string:image-path:weather-clear boolean:transient:true --replaces-process "brightness-popup"
 fi
 
 if [ $command = '=' ]; then
 	if [ -z $inputValue ]; then
 		val=$(cat $device)
-		notify-send.py -t $timeout "Brightness" "<b>$val</b>" --hint string:image-path:weather-clear boolean:transient:true --replaces-process "brightness-popup"
+		#notify-send.py -t $timeout "Brightness" "<b>$val</b>" --hint string:image-path:weather-clear boolean:transient:true --replaces-process "brightness-popup"
 	else
 		echo $inputValue | sudo tee $device
-		notify-send.py -t $timeout "Brightness" "<b>$inputValue</b>" --hint string:image-path:weather-clear boolean:transient:true --replaces-process "brightness-popup"
+		#notify-send.py -t $timeout "Brightness" "<b>$inputValue</b>" --hint string:image-path:weather-clear boolean:transient:true --replaces-process "brightness-popup"
 	fi
 fi
 

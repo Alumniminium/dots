@@ -1,31 +1,16 @@
-[colors]
-background =${xrdb:color0:#222}
-foreground =${xrdb:color1:#222}
-foreground-alt = ${xrdb:color8:#222}
-primary = ${xrdb:color2:#222}
-secondary = ${xrdb:color3:#222}
-alert = ${xrdb:color1:#222}
-occupied = ${xrdb:color7:#222}
-
 [bar/example]
 background = ${colors.background}
 foreground = ${colors.foreground}
 monitor = ${env:MONITOR}
-dock = false
 width = 100%
-height = 22
+height = 24
 bottom = false
-linecolor = #666
-spacing = 1
-lineheight = 2
-module-margin-right = 1
-font-0 = "ProFontWindows:style=Regular:pixelsize=14;3"
-font-1 = "FontAwesome:pixelsize=10;1"
-font-2 = "Font Awesome 5 Brands:style=Regular:pixelsize=10;1"
-font-3 = "Dejavu sans:style=regular:pixelsize=10;1"
-modules-left = bspwm battery
+module-margin = 1
+font-0 = ${fonts.pro}
+font-1 = ${fonts.icon4}
+modules-left = bspwm battery 
 modules-center = cputemp cpu freqmon mem
-modules-right = wifi wireguard-active info-pingrtt date backlight
+modules-right = date
 tray-position = right
 tray-maxsize = 10
 tray-scale = 1.25
@@ -34,25 +19,66 @@ tray-background = ${colors.background}
 tray-detached = false
 wm-restack = bspwm
 
+[bar/bottomleft]
+monitor = ${env:MONITOR}
+background = ${colors.background}
+foreground = ${colors.green}
+font-0 = ${fonts.pro}
+font-1 = ${fonts.icon4}
+
+width = 15%
+height = 48
+offset-x = 8
+offset-y = 8
+bottom = true
+radius = 16.0
+
+module-margin = 1
+modules-center = wireguard-active wifi info-pingrtt
+
+wm-restack = bspwm
+override-redirect = true
+
+[bar/bottomright]
+monitor = ${env:MONITOR}
+background = ${colors.background}
+foreground = ${colors.green}
+font-0 = ${fonts.pro}
+font-1 = ${fonts.icon4}
+
+width = 15%
+height = 48
+offset-x = 1624
+offset-y = 8
+bottom = true
+radius = 16.0
+
+module-margin = 1
+modules-center = battery
+
+wm-restack = bspwm
+override-redirect = true
+
 [module/bspwm]
 type = internal/bspwm
+pin-workspaces = false
 enable-click = true
 format = <label-state> <label-mode>
 
 label-active = %name%
-label-active-foreground = ${colors.foreground}
+label-active-foreground = ${colors.green}
 label-active-padding = 1
 
 label-occupied = %name%
-label-occupied-foreground = ${colors.secondary}
+label-occupied-foreground = ${colors.purple}
 label-occupied-padding = 1
 
 label-urgent = %name%
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.red}
 label-urgent-padding = 1
 
 label-empty = %name%
-label-empty-foreground = ${colors.foreground-alt}
+label-empty-foreground = ${colors.black}
 label-empty-padding = 1
 
 
@@ -60,14 +86,15 @@ label-empty-padding = 1
 type = internal/network
 interface = ${env:WIFI}
 interval = 2
-ramp-signal-5 = "%{F#08fee4}%{F-}"
-ramp-signal-4 = "%{F#08fee4}%{F-}"
-ramp-signal-3 = "%{F#00c1de}%{F-}"
-ramp-signal-2 = "%{F#e000a2}%{F-}"
-ramp-signal-1 = "%{F#ff5b77}%{F-}"
+ramp-signal-5 = 
+ramp-signal-4 = 
+ramp-signal-3 = 
+ramp-signal-2 = 
+ramp-signal-1 = 
 ramp-signal-0 = "I can't even.."
 format-connected = <ramp-signal><label-connected>
-label-connected = "%{F#08fee4}%essid%"
+label-connected = %essid%
+label-connected-foreground = ${colors.green}
 
 [module/date]
 type = internal/date
@@ -81,7 +108,6 @@ label = RAM: %percentage_used%%
 
 [module/backlight]
 type = internal/backlight
-; ls /sys/class/backlight/
 card = amdgpu_bl0
 format = <ramp> 
 label = BL: %percentage%%
@@ -105,6 +131,8 @@ interval = 5
 type = custom/script
 exec =  ~/.config/polybar/wireguard-active.sh
 interval = 10
+click-left = ~/.local/bin/wireguard-toggle.sh toggle
+click-right = ~/.local/bin/wireguard-toggle.sh disable
 
 [module/cpu]
 type = internal/cpu
@@ -142,6 +170,27 @@ interval = 2
 
 [module/spacer]
 type = custom/script
-exec = echo "|"
-tail = false
-interval = 1
+exec = echo " "
+tail = true
+interval = 10
+
+
+
+[colors]
+black = 393536
+purple = 6658C6
+red = Fa4C60
+blue = 6163FA
+green = 53CA79
+white = ffffff 
+background =${xrdb:color0:#222}
+foreground =${xrdb:color1:#222}
+foreground-alt = ${xrdb:color8:#222}
+primary = ${xrdb:color2:#222}
+secondary = ${xrdb:color3:#222}
+alert = ${xrdb:color1:#222}
+occupied = ${xrdb:color7:#222}
+
+[fonts]
+pro = "ProFontWindows:style=Regular:pixelsize=14;3"
+icon4 = "FontAwesome:pixelsize=10;1"

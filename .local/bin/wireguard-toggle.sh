@@ -1,8 +1,8 @@
 #!/bin/bash
 
-WIREGUARD_CONNECTION="trbl-wg"
-NAMESERVER1="91.239.100.100 # anycast.censurfridns.dk"
-NAMESERVER2="89.233.43.71 # unicast.censurfridns.dk"
+WIREGUARD_CONNECTION="trbl"
+NAMESERVER1="80.80.80.80"
+NAMESERVER2="80.80.81.81"
 
 do=$1
 

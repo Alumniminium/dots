@@ -59,11 +59,11 @@
             "state": "true",
             "input-gain": "0",
             "output-gain": "-1",
-            "amount": "0",
+            "amount": "0.99999999999999989",
             "harmonics": "8.5",
             "scope": "100",
             "floor": "20",
-            "blend": "-10",
+            "blend": "0",
             "floor-active": "false",
             "listen": "false"
         },
@@ -546,7 +546,7 @@
             "input-gain": "0",
             "output-gain": "-1",
             "kernel-path": "\/home\/alu\/.config\/PulseEffects\/irs\/Dolby Pro Logic II.irs",
-            "ir-width": "100"
+            "ir-width": "75"
         },
         "crystalizer": {
             "state": "true",

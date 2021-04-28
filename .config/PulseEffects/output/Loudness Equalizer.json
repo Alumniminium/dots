@@ -641,7 +641,7 @@
             "state": "false",
             "input-gain": "0",
             "output-gain": "0",
-            "model-path": ""
+            "model-path": "Standard RNNoise Model"
         }
     }
 }

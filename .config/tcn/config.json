@@ -1,22 +1,22 @@
 {
   "Redis": {
-    "Hosts": "",
+    "Hosts": "89.163.146.76",
     "QueueKey": "Queue",
-    "NodeQueueKey": "laptop_Processing",
+    "NodeQueueKey": "ideapad_Processing",
     "UpdateChannel": "Update",
     "TimeUpdateChannel": "TimeUpdate",
     "WaveformChannel": "Waveform"
   },
   "Transcoder": {
     "MaxAudioDuration": 900000,
-    "QueueSize": 24,
-    "Threads": 12
+    "QueueSize": 8,
+    "Threads": 4
   },
   "Uploader": {
-    "QueueSize": 16,
-    "Threads": 8
+    "QueueSize": 8,
+    "Threads": 4
   },
-  "FlacEncodeMulti": 64,
+  "FlacEncodeMulti": 30,
   "FlacDecodeMulti": 235,
   "WaveformMulti": 235
 }
