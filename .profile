@@ -18,3 +18,6 @@ export MGFXC_WINE_PATH=/home/alu/.winemonogame
 # fix java applications not rendering
 export _JAVA_AWT_WM_NONREPARENTING=1export MANGOHUD=1
 export MANGOHUD=1
+export MANGOHUD=1
+export MANGOHUD=1
+export ENABLE_VKBASALT=1

@@ -2,7 +2,7 @@
 from Xlib import display
 from time import sleep
 import subprocess
-
+sleep(10)
 subprocess.call("battery-conservation.sh status", shell=True)
 subprocess.call("rapid-charge.sh status", shell=True)
 subprocess.call("performance-mode.sh status", shell=True)
@@ -21,7 +21,7 @@ while True:
 		subprocess.call("pkill -USR1 deadd-notificat", shell=True)
 
 	if x != last_x:
-		sleep(0.05)
+		sleep(0.1)
 	else:
 		sleep(0.5)
 	print(x)

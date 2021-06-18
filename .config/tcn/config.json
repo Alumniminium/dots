@@ -1,4 +1,5 @@
 {
+  "TempFileStoragePath": "/tmp/transgender-dev/",
   "Redis": {
     "Hosts": "89.163.146.76",
     "QueueKey": "Queue",

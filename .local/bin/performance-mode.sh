@@ -15,9 +15,12 @@ if [ $control = 'extreme' ]; then
 	sudo ryzenadj -a 23000 -b 23000 -c 23000
 elif [ $control = 'intelligent' ]; then
 	echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x000FB001' | sudo tee /proc/acpi/call
+    sudo cpupower frequency-set -g schedutil
+	sudo ryzenadj -a 15000 -b 15000 -c 15000
 elif [ $control = 'battery' ]; then
 	echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0013B001' | sudo tee /proc/acpi/call
 	sudo cpupower frequency-set -g powersave
+	sudo ryzenadj -a 10000 -b 10000 -c 10000
 elif [ $control = 'ultralow' ]; then
 	echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0013B001' | sudo tee /proc/acpi/call
 	sudo cpupower frequency-set -g powersave

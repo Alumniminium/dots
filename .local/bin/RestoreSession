@@ -10,20 +10,20 @@ done <<< $(xrandr | grep -w 'connected' | cut -d' ' -f 1)
 
 if [ "$multi" = "1" ]; then
 	export MONITOR="DisplayPort-0"
-	xrandr --output eDP --off
+	#xrandr --output eDP --off
 	#xrandr --output eDP --scale-from 2560x1440
-	xrandr --output DisplayPort-0 --mode 2560x1440
+	xrandr --output DisplayPort-0 --mode 1920x1080 --same-as eDP
 else
 	export MONITOR="eDP"
 	xrandr --output DisplayPort-0 --off
-	xrandr --output eDP --mode 1920x1080 --scale-from 1920x1080
+	xrandr --output eDP --mode 1920x1080
 fi
 
 export WIFI=$(ip a | grep " w" | cut -d ' ' -f 2 | cut -d ':' -f1)
 
 bspc monitor $MONITOR -d          
 pkill polybar
-screen -dmS polybar sh -c 'polybar example'
+screen -dmS polybar sh -c 'polybar example & polybar bottomleft & polybar bottomright'
 feh --bg-fill .bg
 
 pkill sidebar.sh

@@ -111,7 +111,7 @@ super + space
     dmenu_recent -fn "ProFontWindows-14" -i -l 12
 
 # terminal
-super + z
+super + Return
 	termite -d ~
 
 # floating terminal

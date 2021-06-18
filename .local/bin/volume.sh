@@ -5,12 +5,12 @@ VOL=$(pamixer --get-volume)
 case "$1" in
     "up")
 		 VOL=$(($VOL+1))
-         amixer sset "Master" "$VOL%"
-          ;;
+         pamixer --set-volume $VOL
+         ;;
   "down")
 		 VOL=$(($VOL-1))
-         amixer sset "Master" "$VOL%"
-          ;;
+         pamixer --set-volume $VOL
+         ;;
   "mute")
          pamixer -t
           ;;

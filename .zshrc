@@ -7,7 +7,7 @@ ZSH_THEME="lambda-mod"
 source $HOME/.zprofile
 source $ZSH/oh-my-zsh.sh
 (cat ~/.cache/wal/sequences &)
-
+eval "$(zoxide init zsh)"
 alias yt='f() { mpv $1    ytdl-format="bestvideo[height<=?1080][vcodec!=vp9]+bestaudio/best" };f'
 alias chmox='chmod'
 alias cls='clear && ls'
