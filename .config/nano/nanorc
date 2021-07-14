@@ -150,9 +150,6 @@ set nonewlines
 ## beginning of the line.
 # set smarthome
 
-## Use smooth scrolling as the default.
-set smooth
-
 ## Enable soft line wrapping (AKA full-line display).
 # set softwrap
 

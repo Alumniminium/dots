@@ -21,7 +21,8 @@ nm-applet &
 code &
 #chromium &
 discord &
-element-desktop &
+#element-desktop &
+gajim &
 #thunderbird &
 #mailspring &
 geary &

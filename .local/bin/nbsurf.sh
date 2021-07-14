@@ -14,8 +14,10 @@ y=$(xdotool getwindowgeometry $caller  | sort | head -2 | grep , | cut -d ' ' -f
 
 rect=$(echo -n $width;echo -n 'x'; echo -n $height; echo -n '+'; echo -n $x; echo -n '+'; echo -n $y)
 floating=$(bspc query --node focused -T | grep -o '"state":"floating"' | wc -l)
-
-if [ $floating == 1 ]; then
+if [[ "$@" == *"watch"* ]]; then
+    bspc rule -a mpv state floating rectangle=$rect --one-shot
+	mpv $@ &
+elif [ $floating == 1 ]; then
     bspc rule -a Surf state floating rectangle=$rect --one-shot
     surf $@ &
 else

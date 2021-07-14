@@ -1,1 +1,1 @@
-browser "chromium %u > ~/qutebrowser.log"
+browser "nbsurf.sh %u > ~/surf.log"

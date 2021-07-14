@@ -2,7 +2,7 @@
 from Xlib import display
 from time import sleep
 import subprocess
-sleep(10)
+#sleep(10)
 subprocess.call("battery-conservation.sh status", shell=True)
 subprocess.call("rapid-charge.sh status", shell=True)
 subprocess.call("performance-mode.sh status", shell=True)

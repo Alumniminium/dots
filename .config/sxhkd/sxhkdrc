@@ -112,11 +112,11 @@ super + space
 
 # terminal
 super + Return
-	termite -d ~
+	alacritty
 
 # floating terminal
 super + grave
-  bspc rule -a \* -o state=floating && termite -d ~
+  bspc rule -a \* -o state=floating && alacritty
 
 # screenshot
 Print

@@ -57,11 +57,11 @@
         ],
         "bass_enhancer": {
             "state": "true",
-            "input-gain": "0",
-            "output-gain": "-1",
+            "input-gain": "-2",
+            "output-gain": "-2",
             "amount": "0.99999999999999989",
-            "harmonics": "8.5",
-            "scope": "100",
+            "harmonics": "9.9999999999999947",
+            "scope": "150",
             "floor": "20",
             "blend": "0",
             "floor-active": "false",
@@ -118,8 +118,8 @@
             "state": "true",
             "mode": "IIR",
             "num-bands": "10",
-            "input-gain": "0",
-            "output-gain": "-1",
+            "input-gain": "-2",
+            "output-gain": "-2",
             "split-channels": "false",
             "left": {
                 "band0": {
@@ -543,16 +543,16 @@
         },
         "convolver": {
             "state": "true",
-            "input-gain": "0",
-            "output-gain": "-1",
+            "input-gain": "-2",
+            "output-gain": "-2",
             "kernel-path": "\/home\/alu\/.config\/PulseEffects\/irs\/Dolby Pro Logic II.irs",
-            "ir-width": "75"
+            "ir-width": "50"
         },
         "crystalizer": {
             "state": "true",
             "aggressive": "false",
-            "input-gain": "0",
-            "output-gain": "-1",
+            "input-gain": "-2",
+            "output-gain": "-2",
             "band0": {
                 "intensity": "12",
                 "mute": "false",

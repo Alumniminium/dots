@@ -4,14 +4,14 @@
 #load "/home/alu/coding/linux-dotnet-scripts/wrappers/xprop.csx"
 #load "/home/alu/coding/linux-dotnet-scripts/wrappers/bspc/bspcStream.csx"
 
-StreamWriter writer = new StreamWriter("/tmp/extenal_rules.log", true) { AutoFlush = true };
+StreamWriter writer = new ("/tmp/extenal_rules.log") { AutoFlush = true };
 
 try
 {
     writer.WriteLine("Starting up...");
 
     bspcStream.Flags = bspcStream.ParseFlags(Args[3]);
-    var (WM_CLASS, WM_NAME, WM_TYPE) = await xprop.getWindowInfoById(Args[0]);
+    var (WM_CLASS, WM_NAME, WM_TYPE) = xprop.getWindowInfoById(Args[0]);
 
     var paths = new[]
     {
