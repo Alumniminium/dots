@@ -1,31 +1,32 @@
 #!/bin/sh
 
-multi='0'
+export WIFI=$(ip a | grep " w" | cut -d ' ' -f 2 | cut -d ':' -f1)
+pkill polybar -KILL
+pkill sidebar.sh -KILL
+pkill deadd-notificat -KILL
+
+bspc monitor HDMI-A-0 --remove
+bspc monitor DisplayPort-0 --remove
+
 while IFS= read -r line; do
-	if [ "$line" = "DisplayPort-0" ]; then
-		multi='1'
+	if [ "$line" = "HDMI-A-0" ]; then
+		export MONITOR="HDMI-A-0"
+	elif [ "$line" = "DisplayPort-0" ]; then
+		export MONITOR="DisplayPort-0"
+	else
+		export MONITOR="eDP"
 	fi
 done <<< $(xrandr | grep -w 'connected' | cut -d' ' -f 1)
 
-
-if [ "$multi" = "1" ]; then
-	export MONITOR="DisplayPort-0"
-	#xrandr --output eDP --off
-	#xrandr --output eDP --scale-from 2560x1440
-	xrandr --output DisplayPort-0 --mode 1920x1080 --same-as eDP
+if [ "$MONITOR" = "HDMI-A-0" ] || [ "$MONITOR" = "HDMI-A-0" ]; then
+	xrandr --output $MONITOR --mode 2560x1440 --same-as eDP
 else
-	export MONITOR="eDP"
-	xrandr --output DisplayPort-0 --off
-	xrandr --output eDP --mode 1920x1080
+	xrandr --output $MONITOR --mode 1920x1080
+	screen -dmS polybar sh -c 'polybar bottomleft & polybar bottomright'
 fi
 
-export WIFI=$(ip a | grep " w" | cut -d ' ' -f 2 | cut -d ':' -f1)
+screen -dmS polybard_sidebar sh -c 'polybar example & deadd-notification-center'
 
 bspc monitor $MONITOR -d          
-pkill polybar
-screen -dmS polybar sh -c 'polybar example & polybar bottomleft & polybar bottomright'
-feh --bg-fill .bg
 
-pkill sidebar.sh
-pkill deadd-notificat -KILL
-screen -dmS sidebar sh -c 'deadd-notification-center'
+feh --bg-fill .bg2
